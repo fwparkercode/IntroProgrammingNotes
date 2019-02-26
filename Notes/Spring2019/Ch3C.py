@@ -1,5 +1,5 @@
 # Chapter 3 - Quiz Games and IF Statements
-
+'''
 a = 4
 b = 5
 c = 5
@@ -183,6 +183,29 @@ elif answer.upper() == "LATIN":
     print("I hear that is a fine institution")
 else:
     print("Good for you")
+'''
 
+score = 0
 
+print("\nQuestion 1:")
+print("What is 2 + 2?")
+answer = float(input("Your answer: "))
 
+if answer == 4:
+    print("Correct!")
+    score += 1
+else:
+    print("You missed that one!")
+
+print("\nQuestion 2:")
+print("What is 3 + 2?")
+answer = float(input("Your answer: "))
+
+if answer == 5:
+    print("Correct!")
+    score += 1
+else:
+    print("You missed that one!")
+
+print()
+print("You got", str(score / 2 * 100) + "%")
