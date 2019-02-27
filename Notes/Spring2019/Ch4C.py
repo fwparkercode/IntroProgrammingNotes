@@ -27,3 +27,89 @@ print(random.random())
 print(random.random() * 10)  # random float from 0 to 10
 print(random.random() * 5 + 10)  # random float from 10 to 15
 print(random.random() * 15 - 5)  # float from -5 to 10
+
+
+#  FOR LOOPS
+#  repeats code a specific number of times
+
+# i is the index, range is how many times to repeat
+for i in range(10):
+    print("Hello World")
+    print("Hello Class")
+
+# i can also be used as a variable
+for i in range(10):
+    print(i)
+
+# the range function looks like the randrange function (start, end, count_by)
+
+# counts 1 to 10
+for i in range(1, 11):
+    print(i)
+
+# counts by 5s from 5 to 45
+for i in range(5, 50, 5):
+    print(i)
+
+# count from - 5 to 3
+for i in range(-5, 4):
+    print(i)
+
+# count from - 20 to -12 by 2s
+for i in range(-20, -11, 2):
+    print(i)
+
+# you can even use a negative count_by
+for i in range(20, -1, -1):
+    print(i)
+
+
+# Nested loops
+
+for i in range(5):
+    print("Francis")
+    for j in range(5):
+        print("Parker")
+
+# Keeping a running total
+# Sum all of the numbers from 1 to 100
+
+total = 0
+for i in range(1, 101):
+    total += i
+
+print(total)
+
+a = 0
+
+for i in range(10):
+    a += 1
+    for j in range(10):
+        a += 1
+        for j in range(10):
+            a += 1
+
+print(a)
+
+print("${:.2f}".format(5.80))
+
+number = input("Enter a number")
+try:
+    number = float(number)
+except:
+    print("That is not a number")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
