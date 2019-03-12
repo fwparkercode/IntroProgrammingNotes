@@ -91,13 +91,93 @@ for i in range(10):
 
 print(a)
 
-print("${:.2f}".format(5.80))
+# roll a 6 sided die 100 times
+# count the number of times you rolled a 6
 
-number = input("Enter a number")
-try:
-    number = float(number)
-except:
-    print("That is not a number")
+sixes = 0
+
+for i in range(100):
+    roll = random.randrange(1, 7)
+    if roll == 6:
+        sixes += 1
+
+print(sixes / 100 * 100)
+
+
+
+# WHILE LOOPS
+#  Use this if you want to continue until a condition exists
+#  When you have a choice, use FOR.
+
+# count from 1 to 10
+x = 1  # set initial "index variable"
+
+while x <= 10:
+    print(x) # the order of operations in the loop matters
+    x += 1  # this is done automatically in the FOR loop
+
+
+# equivalent to this FOR loop
+for i in range(1, 11):
+    print(i)
+
+# print all of the powers of 2 less than 10000
+power = 1
+
+while 2 ** power < 10000:
+    print(2 ** power)
+    power += 1
+
+#  infinite loop
+x = 5
+'''
+while x > 0:
+    print("Hello")
+'''
+'''
+while x > 0:
+    x += x
+    print(x ** 2)
+'''
+
+# Loop until you want to quit (game loop)
+
+print("Welcome to Wizard's Quest 4!")
+
+done = False
+
+while not done:
+    print("A dragon is blocking the only exit")
+    answer = input("Do you want to attack the dragon? ")
+    if answer.upper() == "YES":
+        print("The dragon eats you!")
+        done = True
+
+print("Thank you for playing")
+
+# coin flip
+heads = 0
+tails = 0
+
+flip = random.randrange(2)
+if flip == 0:
+    print("Heads")
+    heads += 1
+else:
+    print("Tails")
+    tails += 1
+
+# rock paper scissors
+player = int(input("Rock, Paper, or Scissors (Enter 0, 1, or 2): "))
+computer = random.randrange(3)
+
+
+
+
+
+
+
+
 
 
 
