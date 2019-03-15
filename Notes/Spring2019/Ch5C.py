@@ -40,6 +40,9 @@ score = 0
 # font.SysFont("font name", size, Bold, Italic)
 my_font = pygame.font.SysFont("Calibri", 40, True, False)
 
+x_offset = 0
+y_offset = 0
+
 # -------- Main Program Loop -----------
 while not done:
     # --- Main event loop
@@ -69,6 +72,27 @@ while not done:
 
     # draw.polygon(surface, color, [[x1,y1],[x2,y2],[x3,y3]...[xn,yn]], optional thickness
     pygame.draw.polygon(screen, ORANGE, [[400,100],[500,100],[450,200]])
+
+    # use nested loops to draw a grid.
+    for x in range(0, screen_width, 50):
+        for y in range(0, screen_height, 50):
+            pygame.draw.rect(screen, RED, [x, y, 20, 20])
+
+    # shadows or outlines
+    pygame.draw.rect(screen, BLACK, [310,310,100,100])
+    pygame.draw.rect(screen, BLUE, [300,300,100,100])
+
+    x_offset += 1
+    y_offset += 1
+    pygame.draw.rect(screen, ORANGE, [200 + x_offset, 200 + y_offset,100,100])
+    pygame.draw.rect(screen, BLACK, [200 + x_offset, 200 + y_offset,100,100], 3)
+
+
+    # changing colors
+    for i in range(256):
+        pygame.draw.line(screen, (i, i, 255), [0, i], [screen_width, i], 1)
+
+
 
     # render the text
     #  render("text", anti-alias, color)
