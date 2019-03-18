@@ -86,6 +86,8 @@ while not done:
     for i in range(256):
         pygame.draw.line(screen, (i, i, 255), [0, 0 + i], [screen_width, 0 + i])
 
+
+
     y = 0
     for x in range(200, 301, 20):
         pygame.draw.polygon(screen, WHITE, [[0 + x,6 + y],[12 + x,6 + y],[6 + x,9 + y]])
