@@ -166,4 +166,4 @@ print(decoded_message)
 
 n = int(input("Enter a month number: "))
 months = "JanFebMarAprMayJunJulAugSepOctNovDec"
-print(months[n])  # change this line only
+print(months[(n - 1) * 3:(n - 1) * 3 + 3])  # change this line only
