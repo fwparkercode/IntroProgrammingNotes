@@ -42,7 +42,14 @@ rect_y = 100
 ellipse_x = 0
 ellipse_y = 200
 ellipse_change_x = 5
-ellipse_change_y = 5
+ellipse_change_y = -1
+ellipse_accel_y = 0.1
+
+health = 500
+
+r = 0
+g = 0
+b = 0
 
 # -------- Main Program Loop -----------
 while not done:
@@ -62,17 +69,28 @@ while not done:
     if ellipse_x < 0:
         ellipse_change_x *= -1
 
+    ellipse_change_y += ellipse_accel_y
     ellipse_y += ellipse_change_y
     if ellipse_y > screen_height - 50:
         ellipse_change_y *= -1
     if ellipse_y < 0:
         ellipse_change_y *= -1
 
+    health -= 1
+
+    if r < 255:
+        r += 1
+
     # --- Drawing code should go here
-    screen.fill(WHITE)
+    screen.fill((r, 255, 255))
 
     pygame.draw.rect(screen, RED, [rect_x, rect_y, 50, 50])
     pygame.draw.ellipse(screen, GREEN, [ellipse_x, ellipse_y, 50, 50])
+
+    if health < 100:
+        pygame.draw.line(screen, RED, [0, 50], [health, 50], 10)  # health bar
+    else:
+        pygame.draw.line(screen, GREEN, [0, 50], [health, 50], 10)  # health bar
 
     pygame.display.flip()  #update the screen
     clock.tick(60)  #60 frames per second
