@@ -51,6 +51,8 @@ r = 0
 g = 0
 b = 0
 
+frame = 0
+
 # -------- Main Program Loop -----------
 while not done:
     # --- Main event loop
@@ -58,6 +60,8 @@ while not done:
         if event.type == pygame.QUIT:
             done = True
     # --- Game logic should go here
+    frame += 1
+
     rect_x += 4
     if rect_x > screen_width:
         # wraps around to left hand side of screen
@@ -84,7 +88,12 @@ while not done:
     # --- Drawing code should go here
     screen.fill((r, 255, 255))
 
-    pygame.draw.rect(screen, RED, [rect_x, rect_y, 50, 50])
+    if frame % 20 < 10:
+        pygame.draw.rect(screen, RED, [rect_x, rect_y, 50, 50])
+    else:
+        pygame.draw.rect(screen, BLUE, [rect_x, rect_y, 50, 50])
+
+
     pygame.draw.ellipse(screen, GREEN, [ellipse_x, ellipse_y, 50, 50])
 
     if health < 100:
