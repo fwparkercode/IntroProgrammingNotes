@@ -32,6 +32,14 @@ red_y = 200
 red_change_x = 5  # speed of the red rect
 red_change_y = 3
 
+black_x = 100  # bouncing ball
+black_y = 100
+black_change_x = 4
+black_change_y = -2
+black_accel_y = 0.1
+
+health = 500
+
 # -------- Main Program Loop -----------
 while not done:
     # --- Main event loop  (user inputs)
@@ -39,6 +47,8 @@ while not done:
         if event.type == pygame.QUIT:
             done = True
     # --- Game logic should go here
+    health -= 1
+
     blue_x += 2
     if blue_x > screen_width:
         blue_x = -50  # wraps back to left
@@ -55,11 +65,33 @@ while not done:
     if red_y < 0:
         red_change_y *= -1
 
+    black_x += black_change_x
+    if black_x > screen_width - 50:
+        black_change_x *= -1
+    if black_x < 0:
+        black_change_x *= -1
+
+    black_change_y += black_accel_y
+    black_y += black_change_y
+    if black_y > screen_height - 50:
+        black_change_y *= -1
+    if black_y < 0:
+        black_change_y *= -1
+
     # --- Drawing code should go here
 
     screen.fill(WHITE)
     pygame.draw.rect(screen, BLUE, [blue_x, blue_y, 50, 50])
     pygame.draw.rect(screen, RED, [red_x, red_y, 50, 50])
+    pygame.draw.ellipse(screen, BLACK, [black_x, black_y, 50, 50])
+
+
+    if health <= 0:
+        pass
+    elif health < 100:
+        pygame.draw.line(screen, RED, [50, 50], [50 + health, 50], 30)
+    else:
+        pygame.draw.line(screen, GREEN, [50, 50], [50 + health, 50], 30)
 
 
     pygame.display.flip() # Update the screen with what we've drawn.

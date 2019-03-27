@@ -102,6 +102,6 @@ while not done:
         pygame.draw.line(screen, GREEN, [0, 50], [health, 50], 10)  # health bar
 
     pygame.display.flip()  #update the screen
-    clock.tick(60)  #60 frames per second
+    clock.tick_busy_loop(60)  #60 frames per second
 
 pygame.quit()  #Close the window and quit.
