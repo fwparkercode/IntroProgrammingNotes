@@ -9,7 +9,7 @@ pygame.init()  # do not put anything pygame above this line
 # Define some colors (red, green, blue)
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
-GREEN = (0, 255, 0)
+GREEN = (0, 150, 0)
 RED = (255, 0, 0)
 BLUE = (0, 0, 255)
 
@@ -40,6 +40,12 @@ black_accel_y = 0.1
 
 health = 500
 
+frame = 0
+
+r = 0
+g = 0
+b = 0
+
 # -------- Main Program Loop -----------
 while not done:
     # --- Main event loop  (user inputs)
@@ -48,6 +54,8 @@ while not done:
             done = True
     # --- Game logic should go here
     health -= 1
+    frame += 1
+    print(frame)
 
     blue_x += 2
     if blue_x > screen_width:
@@ -78,12 +86,27 @@ while not done:
     if black_y < 0:
         black_change_y *= -1
 
-    # --- Drawing code should go here
+    b += 1
+    r += 2
+    g += 3
 
-    screen.fill(WHITE)
+    if b > 255:
+        b = 0
+    if r > 255:
+        r = 0
+    if g > 255:
+        g = 0
+
+    # --- Drawing code should go here
+    screen.fill([r, g, b])
     pygame.draw.rect(screen, BLUE, [blue_x, blue_y, 50, 50])
     pygame.draw.rect(screen, RED, [red_x, red_y, 50, 50])
     pygame.draw.ellipse(screen, BLACK, [black_x, black_y, 50, 50])
+
+    if frame % 20 > 10:
+        pygame.draw.rect(screen, RED, [0, 0, 50, 50])  # blink me
+    else:
+        pygame.draw.rect(screen, BLUE, [0, 0, 50, 50])  # blink me
 
 
     if health <= 0:
