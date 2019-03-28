@@ -43,7 +43,12 @@ while not done:
     # --- Drawing code should go here
     screen.fill(BLACK)
 
-    pygame.draw.ellipse(screen, WHITE, [x, y, 7, 7])
+    for i in range(len(snow_list)):
+        snow_list[i][1] += 1
+        if snow_list[i][1] > screen_height:
+            snow_list[i][1] = -7
+
+        pygame.draw.ellipse(screen, WHITE, [snow_list[i][0], snow_list[i][1], 7, 7])
 
     pygame.display.flip() # Update the screen with what we've drawn.
 
