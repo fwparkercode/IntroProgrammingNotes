@@ -103,7 +103,8 @@ print(x, y)
 def f():
     a = 1
 
-print(a)
+#print(a)  # local variables are not alive in the global space
+
 
 
 
