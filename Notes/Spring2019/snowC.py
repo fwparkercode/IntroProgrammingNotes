@@ -13,6 +13,7 @@ WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
 RED = (255, 0, 0)
 BLUE = (0, 0, 255)
+BROWN = (200, 150, 100)
 
 pygame.init()  # starts pygame (Vroom!)
 
@@ -37,6 +38,16 @@ for i in range(500):
 
 print(snow_list)
 
+x_tree = 0
+y_tree = 0
+
+def draw_tree(x_tree, y_tree):
+    pygame.draw.rect(screen, BROWN, [60 + x_tree, 400 - 230 + y_tree, 30, 45])
+    pygame.draw.polygon(screen, GREEN, [[150 + x_tree, 400 - 230 + y_tree], [75 + x_tree, 250 - 230 + y_tree],
+                                        [x_tree, 400 - 230 + y_tree]])
+    pygame.draw.polygon(screen, GREEN,
+                        [[140 + x_tree, 350 - 230 + y_tree], [75 + x_tree, y_tree], [10 + x_tree, 350 - 230 + y_tree]])
+
 # -------- Main Program Loop -----------
 while not done:
     # --- Main event loop
@@ -49,8 +60,20 @@ while not done:
         if snow_list[i][1] > screen_height:
             snow_list[i][1] = -5
 
+    x_tree += 5
+    if x_tree > screen_width:
+        x_tree = -150
+
+
     # --- Drawing code should go here
     screen.fill(BLACK)
+
+    draw_tree(100, 300)
+    draw_tree(200, 300)
+
+    for x in range(0, screen_width, 100):
+        draw_tree(x, 100)
+
 
     for flake in snow_list:
         pygame.draw.ellipse(screen, WHITE, [flake[0], flake[1], 5, 5])
