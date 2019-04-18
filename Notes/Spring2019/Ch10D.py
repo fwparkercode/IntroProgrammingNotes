@@ -22,7 +22,22 @@ pygame.display.set_caption("Window Bar Name")
 done = False  # condition for my game loop
 
 clock = pygame.time.Clock() # Used to manage how fast the screen updates
-offset = 0
+
+def stick_man(x, y):
+    # Head
+    pygame.draw.ellipse(screen, BLACK, [1 + x, y, 10, 10], 0)
+
+    # Legs
+    pygame.draw.line(screen, BLACK, [5 + x, 17 + y], [10 + x, 27 + y], 2)
+    pygame.draw.line(screen, BLACK, [5 + x, 17 + y], [x, 27 + y], 2)
+
+    # Body
+    pygame.draw.line(screen, RED, [5 + x, 17 + y], [5 + x, 7 + y], 2)
+
+    # Arms
+    pygame.draw.line(screen, RED, [5 + x, 7 + y], [9 + x, 17 + y], 2)
+    pygame.draw.line(screen, RED, [5 + x, 7 + y], [1 + x, 17 + y], 2)
+
 
 # -------- Main Program Loop -----------
 while not done:
@@ -34,14 +49,9 @@ while not done:
     # --- Game logic should go here
 
     # --- Drawing code should go here
-    screen.fill(GREEN)
-    offset += 1
-    if offset > 50:
-        offset = 0
-    for x in range(-100, screen_width, 50):
-        pygame.draw.rect(screen, RED, [x + offset, 100, 20, 20])
+    screen.fill(WHITE)
 
-
+    stick_man(100, 10)
 
     pygame.display.flip() # Update the screen with what we've drawn.
 
