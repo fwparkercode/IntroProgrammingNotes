@@ -1,5 +1,10 @@
 # Chapter 1 - Custom Calculator
 
+
+a = False
+a = not a
+print(a)
+
 # Printing strings
 print("Hello World")
 

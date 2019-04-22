@@ -44,20 +44,56 @@ def draw_stickman(x, y):
 stick_x = 0
 stick_y = 0
 
+key_x = 0
+key_y = 0
+change_x = 0
+change_y = 0
+
+background = WHITE
+
 # -------- Main Program Loop -----------
 while not done:
     # --- Main event loop
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
+        elif event.type == pygame.MOUSEMOTION:
+            print(event.rel, event.pos, event.buttons)
+        elif event.type ==  pygame.MOUSEBUTTONDOWN:
+            background = GREEN
+            print(event.pos, event.button)
+        elif event.type == pygame.MOUSEBUTTONUP:
+            background = WHITE
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_RIGHT:
+                change_x = 3
+            elif event.key == pygame.K_LEFT:
+                change_x = -3
+            elif event.key == pygame.K_UP:
+                change_y = -3
+            elif event.key == pygame.K_DOWN:
+                change_y = 3
+        elif event.type == pygame.KEYUP:
+            if event.key == pygame.K_RIGHT or event.key == pygame.K_LEFT:
+                change_x = 0
+            if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
+                change_y = 0
 
     # --- Game logic should go here
     stick_x, stick_y = pygame.mouse.get_pos()
+    key_x += change_x
+    key_y += change_y
+
+    if key_x < 0:
+        key_x = 0 # prevents from going off left side
+    if key_x > screen_width - 10:
+        key_x = screen_width - 10
 
     # --- Drawing code should go here
-    screen.fill(WHITE)
+    screen.fill(background)
 
     draw_stickman(stick_x, stick_y)
+    draw_stickman(key_x, key_y)
 
     pygame.display.flip()  #update the screen
     clock.tick(60)  #60 frames per second
