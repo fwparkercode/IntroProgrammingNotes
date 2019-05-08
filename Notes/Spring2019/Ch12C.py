@@ -102,3 +102,37 @@ vamp.change_form()
 
 hero.attack(vamp, 50)
 
+
+
+# There is only one way to create a class object
+player = Player("Jane")
+player2 = player  # this doesn't work
+player2.gold += 1000
+print(player2.gold)
+print(player.gold)
+
+print(player)
+print(player2)
+
+
+
+# "IS A" (parent-child)
+# A railroad IS A property
+# Community Chest IS A space
+
+# "HAS A" (attribute)
+# Player HAS A money (amount)
+# Player HAS A property_list
+# Bank HAS A money_amount
+# Player HAS A token
+
+
+
+
+
+
+
+
+
+
+

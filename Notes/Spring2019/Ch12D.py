@@ -74,7 +74,7 @@ vamp.change_form()
 
 
 
-'''
+
 # DAY 1 NOTES
 # MONOPOLY
 
@@ -117,4 +117,11 @@ print(player2.money)
 for i in range(100):
     print(i)
 
-'''
+
+
+
+# CREATING AN INSTANCE
+
+
+
+# IS A AND HAS A RELATIONSHIPS (Child vs Attribute)
