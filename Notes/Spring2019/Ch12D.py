@@ -117,11 +117,22 @@ print(player2.money)
 for i in range(100):
     print(i)
 
+print("\n" * 10)
+
+# CREATING AN INSTANCE (only one way to do it)
+player3 = Player()
+player4 = player3  # this is incorrect
+
+print(player3.money)
+player4.money = 0
+print(player3.money)
+
+print(player3)
+
+player4 = Player()  # this is correct
+print(player4)
 
 
 
-# CREATING AN INSTANCE
 
-
-
-# IS A AND HAS A RELATIONSHIPS (Child vs Attribute)
+# "IS A" AND "HAS A" RELATIONSHIPS (Child vs Attribute)

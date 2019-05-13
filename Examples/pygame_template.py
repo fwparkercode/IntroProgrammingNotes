@@ -65,10 +65,11 @@ pygame.quit()
 
 
 """
+'''
 Pygame Base Template C Period
 Spring 2019
 by Aaron Lee
-
+'''
 
 import pygame
 
