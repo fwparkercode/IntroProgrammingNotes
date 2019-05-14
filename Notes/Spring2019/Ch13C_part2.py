@@ -38,12 +38,18 @@ class Block(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()  # grabs a rect based on image
         self.rect.x = random.randrange(0, screen_width - self.rect.width)
         self.rect.y = random.randrange(0, screen_height // 2 - self.rect.height)
-        self.change_x = random.randrange(-4, 5)
+        self.change_x = random.randrange(-1, 2)
+        self.change_y = random.randrange(1, 3)
+
 
     def update(self):
         self.rect.x += self.change_x
         if self.rect.right > screen_width or self.rect.left < 0:
             self.change_x *= -1
+
+        self.rect.y += self.change_y
+        if self.rect.top > screen_height:
+            self.rect.bottom = 0
 
 
 class Bullet(pygame.sprite.Sprite):
@@ -70,12 +76,13 @@ enemy_group = pygame.sprite.Group()
 bullet_group = pygame.sprite.Group()
 
 # make my blocks
-for i in range(50):
+for i in range(10):
     new_block = Block(RED)
     all_sprites_group.add(new_block)
     enemy_group.add(new_block)
 
 score = 0
+level = 1
 
 # -------- Main Program Loop -----------
 while not done:
@@ -98,10 +105,23 @@ while not done:
     hit_list = pygame.sprite.spritecollide(player, enemy_group, True)
 
     for hit in hit_list:
-        score +=1
-        print(score)
+        done = True
 
-    # check for collision between bullets and enemy
+    count = 0
+    for enemy in enemy_group:
+        count += 1
+
+    if count <= 0:
+        # go to next level
+        level += 1
+        for i in range(5 * level):
+            new_block = Block(RED)
+            new_block.change_y *= level
+            new_block.change_x = random.randrange(-level, level + 1)
+            all_sprites_group.add(new_block)
+            enemy_group.add(new_block)
+
+# check for collision between bullets and enemy
     for bullet in bullet_group:
         hit_list = pygame.sprite.spritecollide(bullet, enemy_group, True)
         for hit in hit_list:
