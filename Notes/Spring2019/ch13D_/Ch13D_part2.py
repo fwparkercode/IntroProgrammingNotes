@@ -35,6 +35,16 @@ class Block(pygame.sprite.Sprite):
         self.rect.x = random.randrange(screen_width // 2, screen_width - self.rect.width)
         self.rect.y = random.randrange(screen_height - self.rect.height)
         self.health = 3
+        self.change_y = random.randrange(1, 5)
+
+    def update(self):
+        self.rect.y += self.change_y
+
+        if self.rect.bottom >= screen_height:
+            self.change_y *= -1
+        if self.rect.top <= 0:
+            self.change_y *= -1
+
 
 
 class Bullet(pygame.sprite.Sprite):
@@ -68,13 +78,14 @@ player.rect.left = 0
 player.rect.centery = screen_height // 2
 all_sprites_group.add(player)  # placed player in the group
 
-for i in range(50):
+for i in range(10):
     new_coin = Block()
     all_sprites_group.add(new_coin)
     enemy_group.add(new_coin)
 
 pygame.mouse.set_visible(False)
 score = 0
+level = 1
 # -------- Main Program Loop -----------
 while not done:
     # --- Main event loop  (user inputs)
@@ -93,6 +104,7 @@ while not done:
 
     player.rect.centery = pygame.mouse.get_pos()[1]
     bullet_group.update()
+    enemy_group.update()
 
 
     hit_list = pygame.sprite.spritecollide(player, enemy_group, True)
@@ -108,6 +120,15 @@ while not done:
             if hit.health <= 0:
                 hit.kill()
 
+    # check for next level
+    if len(enemy_group) == 0:
+        level += 1
+        for i in range(10 * level):
+            new_enemy = Block()
+            new_enemy.change_y *= level
+            new_enemy.health *= level
+            all_sprites_group.add(new_enemy)
+            enemy_group.add(new_enemy)
 
     # --- Drawing code should go here
     screen.fill(WHITE)
