@@ -37,7 +37,7 @@ class Block(pygame.sprite.Sprite):
         self.image.fill(color)
         self.rect = self.image.get_rect()  # grabs a rect based on image
         self.rect.x = random.randrange(0, screen_width - self.rect.width)
-        self.rect.y = random.randrange(0, screen_height // 2 - self.rect.height)
+        self.rect.y = random.randrange(-screen_height, 0)
         self.change_x = random.randrange(-1, 2)
         self.change_y = random.randrange(1, 3)
 
@@ -84,6 +84,28 @@ for i in range(10):
 score = 0
 level = 1
 
+# FONTS
+score_font = pygame.font.SysFont("Calibri", 30, True, False)
+
+
+
+#  FUNCTIONS
+def cut_screen():
+    done = False
+    while not done:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                done = True
+            if event.type == pygame.KEYDOWN:
+                done = True
+
+        screen.fill(RED)
+        pygame.display.flip()  # update the screen
+        clock.tick(60)  # 60 frames per second
+
+
+cut_screen()
+
 # -------- Main Program Loop -----------
 while not done:
     # --- Main event loop
@@ -113,7 +135,11 @@ while not done:
 
     if count <= 0:
         # go to next level
+        cut_screen()
         level += 1
+        bullet_group.empty()  # gets rid of everything in group
+        all_sprites_group.empty()
+        all_sprites_group.add(player)
         for i in range(5 * level):
             new_block = Block(RED)
             new_block.change_y *= level
@@ -121,7 +147,7 @@ while not done:
             all_sprites_group.add(new_block)
             enemy_group.add(new_block)
 
-# check for collision between bullets and enemy
+    # check for collision between bullets and enemy
     for bullet in bullet_group:
         hit_list = pygame.sprite.spritecollide(bullet, enemy_group, True)
         for hit in hit_list:
@@ -133,6 +159,9 @@ while not done:
     screen.fill(WHITE)
 
     all_sprites_group.draw(screen)
+
+    text = score_font.render("Score: " + str(score), True, BLACK)
+    screen.blit(text, [30, 30])
 
     pygame.display.flip()  #update the screen
     clock.tick(60)  #60 frames per second
