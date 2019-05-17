@@ -41,6 +41,7 @@ class Player(pygame.sprite.Sprite):
             elif self.change_x < 0:
                 self.rect.left = wall.rect.right
 
+
         self.rect.y += self.change_y
         hit_list = pygame.sprite.spritecollide(self, self.walls, False)
         for wall in hit_list:
@@ -49,9 +50,7 @@ class Player(pygame.sprite.Sprite):
             elif self.change_y < 0:
                 self.rect.top = wall.rect.bottom
 
-
 class Wall(pygame.sprite.Sprite):
-    # -- Methods
     def __init__(self, x, y, width, height):
         super().__init__()
 
@@ -75,8 +74,7 @@ screen = pygame.display.set_mode([800, 600])
 # Set the title of the window
 pygame.display.set_caption('Test')
 
-
-# Create Groups
+# Create groups
 all_sprites_list = pygame.sprite.Group()
 wall_group = pygame.sprite.Group()
 
@@ -84,12 +82,14 @@ wall_group = pygame.sprite.Group()
 player = Player(50, 50)
 all_sprites_list.add(player)
 
-wall1 = Wall(20, 200, 200, 10)
+wall1 = Wall(100, 200, 200, 10)
+wall2 = Wall(90, 200, 10, 200)
 all_sprites_list.add(wall1)
+all_sprites_list.add(wall2)
 wall_group.add(wall1)
-
-# make the wall_group an attribute of the player
+wall_group.add(wall2)
 player.walls = wall_group
+
 
 clock = pygame.time.Clock()
 done = False
