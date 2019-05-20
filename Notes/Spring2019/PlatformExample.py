@@ -16,7 +16,6 @@ class Player(pygame.sprite.Sprite):
         # Set height, width
         self.image = pygame.Surface([15, 15])
         self.image.fill(BLACK)
-        #self.image = pygame.image.load("dragon.png")
 
         # Make our top-left corner the passed-in location.
         self.rect = self.image.get_rect()
@@ -27,8 +26,8 @@ class Player(pygame.sprite.Sprite):
         # Set speed vector
         self.change_x = 0
         self.change_y = 0
+        self.gravity = 0.2
 
-        self.gravity = 0.1
 
     def changespeed(self, x, y):
         """ Change the speed of the player"""
@@ -36,8 +35,6 @@ class Player(pygame.sprite.Sprite):
         self.change_y += y
 
     def update(self):
-        self.change_y += self.gravity
-
         self.rect.x += self.change_x
         hit_list = pygame.sprite.spritecollide(self, self.walls, False)
         for wall in hit_list:
@@ -47,12 +44,13 @@ class Player(pygame.sprite.Sprite):
                 self.rect.left = wall.rect.right
 
 
+        self.change_y += self.gravity
         self.rect.y += self.change_y
         hit_list = pygame.sprite.spritecollide(self, self.walls, False)
         for wall in hit_list:
             if self.change_y > 0:
-                self.rect.bottom = wall.rect.top
                 self.change_y = 0
+                self.rect.bottom = wall.rect.top
             elif self.change_y < 0:
                 self.rect.top = wall.rect.bottom
 
@@ -113,8 +111,7 @@ while not done:
             elif event.key == pygame.K_RIGHT:
                 player.changespeed(3, 0)
             elif event.key == pygame.K_UP:
-                player.change_y = -4
-
+                player.change_y = -6
 
         # Reset speed when key goes up
         elif event.type == pygame.KEYUP:
@@ -122,7 +119,10 @@ while not done:
                 player.changespeed(3, 0)
             elif event.key == pygame.K_RIGHT:
                 player.changespeed(-3, 0)
-
+            elif event.key == pygame.K_UP:
+                player.changespeed(0, 3)
+            elif event.key == pygame.K_DOWN:
+                player.changespeed(0, -3)
 
     # --- Game logic
 
