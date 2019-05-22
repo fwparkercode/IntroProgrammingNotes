@@ -21,13 +21,12 @@ class Player(pygame.sprite.Sprite):
         super().__init__()
 
         # Set height, width
-        self.image = pygame.image.load("walk1.png")
+        self.image = pygame.image.load('walk1.png')
 
-        self.image_list = []
-        self.image_list.append(self.image)
-        self.image_list.append(pygame.image.load("walk2.png"))
-        self.image_list.append(pygame.image.load("left1.png"))
-        self.image_list.append(pygame.image.load("left2.png"))
+        self.image_list = [pygame.image.load('walk1.png'),
+                           pygame.image.load('walk2.png'),
+                           pygame.image.load('left1.png'),
+                           pygame.image.load('left2.png')]
 
         # Make our top-left corner the passed-in location.
         self.rect = self.image.get_rect()
@@ -41,13 +40,13 @@ class Player(pygame.sprite.Sprite):
 
         self.frame = 0
 
+
     def changespeed(self, x, y):
         """ Change the speed of the player"""
         self.change_x += x
         self.change_y += y
 
     def update(self):
-        """ Find a new position for the player"""
         self.frame += 1
 
         if self.change_x > 0:
@@ -56,7 +55,7 @@ class Player(pygame.sprite.Sprite):
             else:
                 self.image = self.image_list[1]
 
-        if self.change_x < 0:
+        elif self.change_x < 0:
             if self.frame % 30 < 15:
                 self.image = self.image_list[2]
             else:
