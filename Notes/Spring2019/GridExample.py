@@ -33,13 +33,15 @@ class Block(pygame.sprite.Sprite):
         # Create an image of the block, and fill it with a color.
         # This could also be an image loaded from the disk.
         self.image = pygame.Surface([width, height])
-        self.image.fill(color)
+        self.image.fill(WHITE)
 
         # Fetch the rectangle object that has the dimensions of the image
         # image.
         # Update the position of this object by setting the values
         # of rect.x and rect.y
         self.rect = self.image.get_rect()
+        pygame.draw.rect(self.image, BLACK, [0, 0, self.rect.width, self.rect.height], 3)
+
 
 
 # Initialize Pygame
@@ -58,10 +60,9 @@ block_list = pygame.sprite.Group()
 # All blocks and the player block as well.
 all_sprites_list = pygame.sprite.Group()
 
-for y in range(50, 300, 30):
-    for x in range(50, 650, 40):
-        # This represents a block
-        block = Block(BLACK, 20, 15)
+for x in range(100, screen_width - 100, 40):
+    for y in range(20, screen_height // 2, 40):
+        block = Block(BLACK, 20, 20)
         block.rect.x = x
         block.rect.y = y
         block_list.add(block)
