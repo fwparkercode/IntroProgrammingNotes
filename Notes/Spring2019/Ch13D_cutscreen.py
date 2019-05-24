@@ -63,11 +63,11 @@ all_sprites_list.add(player)
 
 clock = pygame.time.Clock()
 done = False
-my_font = pygame.font.SysFont('Calibri', 80, True, False)
 
 def cut_screen():
+    my_font = pygame.font.SysFont('Helvetica', 60, True, False)
+    text = my_font.render("Press any key to start", True, WHITE)
     done = False
-    text = my_font.render("Press any key to Start!!", True, WHITE)
     while not done:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -77,7 +77,9 @@ def cut_screen():
 
         screen.fill(BLACK)
 
-        screen.blit(text, [screen_width // 2 - text.get_rect().width // 2, screen_height // 2 - text.get_rect().height // 2])
+        rect = text.get_rect()
+        screen.blit(text, [screen_width // 2 - rect.width // 2, screen_height // 2 - rect.height // 2])
+
         pygame.display.flip()
         clock.tick(60)
 
