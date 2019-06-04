@@ -75,6 +75,7 @@ background_image = pygame.image.load("bgCave.bmp")
 dragon_image = pygame.image.load("spyro.png")
 
 # Sound resources
+#background_music = pygame.mixer.Sound("bgMusic.wav")
 background_music = pygame.mixer.Sound("bgMusic.wav")
 fireball_sound = pygame.mixer.Sound("power2.ogg")
 
