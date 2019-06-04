@@ -54,7 +54,7 @@ my_font = pygame.font.SysFont('Calibri', 40, True, False)
 def start_screen():
     done = False
     text = my_font.render("Press any key to Start!!", True, WHITE)
-    text2 = my_font.render("Collect all the Sage's in under 60 seconds", True, WHITE)
+    text2 = my_font.render("Collect all the Sage - Ava Angel's in under 60 seconds", True, WHITE)
     text3 = my_font.render("Avoid the walls and try to pass each level", True, WHITE)
     text4 = my_font.render("Made by Ava Rosenberg", True, CYAN)
     text5 = my_font.render("Use the control keys to move", True, WHITE)

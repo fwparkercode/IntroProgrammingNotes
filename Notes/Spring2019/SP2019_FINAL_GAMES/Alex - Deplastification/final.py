@@ -85,6 +85,7 @@ class Green_orb(pygame.sprite.Sprite):
             else:
                 self.rect.left = hit.rect.right
                 self.change_x *= -1.1
+            break
 
 
         
@@ -100,7 +101,8 @@ class Green_orb(pygame.sprite.Sprite):
  
             else:
                 self.rect.top = hit.rect.bottom
-                self.change_y *= - 1.1            
+                self.change_y *= - 1.1
+            break
 
 
         #  regulations on the ball, effect life
@@ -109,6 +111,7 @@ class Green_orb(pygame.sprite.Sprite):
                 lose_screen()
             elif self.lives > 0:
                 self.lives -= 1
+                self.rect.y -= 300
 
 
         #  to make sure the ball doesn't leave the screen
