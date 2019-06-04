@@ -20,7 +20,7 @@ PURPLE = (150, 50, 0)
 screen_width = 1280
 screen_height = 720
 size = (screen_width, screen_height)
-screen = pygame.display.set_mode(size, pygame.FULLSCREEN)
+screen = pygame.display.set_mode(size)
 
 pygame.display.set_caption("My Game")
 

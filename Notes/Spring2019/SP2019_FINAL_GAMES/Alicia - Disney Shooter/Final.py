@@ -135,6 +135,7 @@ class Player(pygame.sprite.Sprite):
         self.change_y = 0
         self.wellbeing = 3
         self.player_list = []
+        self.reload = 30
 
     def changespeed(self, x, y):
         """ Change the speed of the player"""
@@ -144,6 +145,8 @@ class Player(pygame.sprite.Sprite):
         self.change_y += y
 
     def update(self):
+        self.reload -= 1
+
         """ Find a new position for the player"""
         self.rect.x += self.change_x
         self.rect.y += self.change_y
@@ -214,6 +217,7 @@ shrapnil_group = pygame.sprite.Group()
 
 # Create the player object
 player = Player(325, 375)
+player.rect.bottom = screen_height
 
 all_sprites_list = pygame.sprite.Group()
 all_sprites_list.add(player)
@@ -419,16 +423,18 @@ while not done:
 
             # shoots bullets from rect center
             elif event.key == pygame.K_SPACE:
-                new_bullet = Bullet()
-                all_sprites_list.add(new_bullet)
-                bullet_group.add(new_bullet)
-                new_bullet.rect.center = player.rect.center
-                shot_sound.play()
-                for extra in player.player_list:
+                if player.reload <= 0:
+                    player.reload = 30
                     new_bullet = Bullet()
                     all_sprites_list.add(new_bullet)
                     bullet_group.add(new_bullet)
-                    new_bullet.rect.center = extra.rect.center
+                    new_bullet.rect.center = player.rect.center
+                    shot_sound.play()
+                    for extra in player.player_list:
+                        new_bullet = Bullet()
+                        all_sprites_list.add(new_bullet)
+                        bullet_group.add(new_bullet)
+                        new_bullet.rect.center = extra.rect.center
 
 
             elif event.key == pygame.K_q:
@@ -455,11 +461,11 @@ while not done:
         new_player = Player(0,0)
         new_player.image = image_list[level-1]
         if len(player.player_list) > 0:
-            new_player.rect.left = player.player_list[-1].rect.right - 35
-            new_player.rect.y = player.rect.y
+            new_player.rect.left = player.player_list[-1].rect.right
+            new_player.rect.bottom = player.rect.bottom
         else:
-            new_player.rect.left = player.rect.right - 30
-            new_player.rect.y = player.rect.y
+            new_player.rect.left = player.rect.right
+            new_player.rect.bottom = player.rect.bottom
         player.player_list.append(new_player)
         all_sprites_list.add(new_player)
         player_group.add(new_player)

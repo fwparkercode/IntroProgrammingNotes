@@ -439,7 +439,8 @@ while not done:
                     fireboy.jumping = True
                     fireboy.change_y = -15
             elif event.key == pygame.K_q:
-                done = True
+                pass
+                #done = True
 
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_a:
