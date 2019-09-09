@@ -545,6 +545,7 @@ while not done:
 
     for wall in water_enemy_group:
         hit_list = pygame.sprite.spritecollide(watergirl, water_enemy_group, False)
+
         for hit in hit_list:
             watergirl.kill()
             game_over.play(1)

@@ -104,13 +104,13 @@ player.rect.bottom = screen_height
 all_sprites_group.add(player)
 
 
-for i in range(100):
+for i in range(50):
     new_coin = Angel()
     new_coin2 = Fire()
-    new_coin.rect.y = random.randrange(-screen_height * new_coin.change_y * 10, 0)
+    new_coin.rect.y = random.randrange(-screen_height * new_coin.change_y, 0)
     all_sprites_group.add(new_coin)
     good_group.add(new_coin)
-    new_coin2.rect.y = random.randrange(-screen_height * new_coin2.change_y * 10, 0)
+    new_coin2.rect.y = random.randrange(-screen_height * new_coin2.change_y, 0)
     all_sprites_group.add(new_coin2)
     enemy_group.add(new_coin2)
 pygame.mouse.set_visible(True)

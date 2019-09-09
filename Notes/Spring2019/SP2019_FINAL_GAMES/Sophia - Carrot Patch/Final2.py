@@ -79,7 +79,7 @@ class Player(pygame.sprite.Sprite): # Rabbit
 class Bullet(pygame.sprite.Sprite): # Bullet
     def __init__(self):
         super().__init__()
-        self.image = pygame.Surface([5, 10])
+        self.image = pygame.Surface([8, 20])
         self.image.fill(ORANGE)
         self.rect = self.image.get_rect()
 
