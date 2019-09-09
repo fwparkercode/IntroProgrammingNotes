@@ -18,10 +18,12 @@ print("Mr. Lee said \"Hi\" to the students.")
 print("First\tMiddle\tLast")
 print("Francis\tWayland\tParker")
 
+
 # return or newline \n (like hitting return or enter)
 print("line1\nline2\nline3")
-
 print("Programming\n\tis\n\t\tfun")
-
 print("c:\\new_folder\\this_file")
+
+
+# Comments
 
