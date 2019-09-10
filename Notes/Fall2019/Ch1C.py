@@ -1,5 +1,6 @@
 # Chapter 1 - Create a Custom Calculator
 
+# Started 9/9/19
 # Printing
 print("Hello World")  # printing a string
 print(5)  # printing an integer
@@ -69,6 +70,56 @@ eight_ball = 8  # correct
 ball8 = 8  # this could also be correct
 
 
+
+# Continued 9/10/19
+tax_percentage = 0.11
+# tax% = 0.11  # illegal, no special characters
+
+# CONSTANTS
+PI = 3.14  # constants are written with all caps
+
+
+
+# Math Operators
+x = 3 + 5 - 2  # addition and subtraction
+y = 4 * 3 / 4  # multiplication and division
+print(x, y)
+
+# floor operator //   division that chops off the decimal remainder
+print(5 / 3)
+print(5 // 3)
+print(2 // 3)
+
+# power **
+print(3 ** 2)
+print(2 ** 8)  # 2^8
+
+# modulus %   returns the remainder after division
+print(13 % 5)
+print(4237689 % 2)  # odd/even check
+print(7 % 5)
+
+
+# These do not work in coding
+# x = 3y
+x = 3 * y  # correct
+# x = 5(y - 1)
+x = 5 * (y - 1)  # correct
+
+
+# Spacing
+x=3*y-8/(6+2)  # legal but not pretty
+x   =  3*    y-   8/(   6+   2)  # legal but hideous
+x = 3 * y - 8 / (6 + 2)  # PEP-8 proper
+
+# PEMDAS used just like math
+
+
+# Importing libraries
+import math
+
+print(math.pi)
+print(math.cos(math.pi / 2))  # works in radians
 
 
 
