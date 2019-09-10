@@ -60,10 +60,75 @@ print(x)
 # Python uses snake_case for variable naming
 # Other languages might use camelCase or PascalCase or kebab-case
 
+# Rules for variable naming
+# no special characters except _
+# snake case with no capitalization
+# numbers are ok, but cannot be first character
+
+# first name = "Bob"  # no spaces
+first_name = "Bob"  # that's better
+
+# 8ball = 8  # cannot start with number
+eight_ball = 8  # fixed
+
+# tax% = 0.11  # no special characters
+tax_percentage = 0.11  # fixed
+
+
+# Math Operators
+
+x = 4 + 5 - 2  # addition and subtraction
+y = 3 * 2 / 4  # multiplication and division
+
+# floor division (//) divides and chops off decimal remainder
+z = 5 // 3
+print(z)
+
+# modulus (%) divides and returns only the remainder
+a = 7 % 4
+print(a)
+
+# power (**)
+b = 3 ** 3
+print(b)
+
+#  These do not work in code (works in math class)
+#c = 5x
+c = 5 * x  # fixed
+
+#d = 5 (x + 2)
+d = 5 * (x + 2)
+
+# Operator spacing
+x=3*2/(8-3)**2  # works but is improper
+x        =3*        2/   (   8  -3 ) **    2    # works but is improper
+x = 3 * 2 / (8 - 3) ** 2  # works and is proper
+
+# PEMDAS Applies!  Be explicit
+
+
+# Importing libraries
+import math
+print(math.pi)
+print(math.cos(math.pi / 2))
 
 
 
 
+# Custom calculators
 
+# user input
+#input()  # waits for user response
+
+#name = input("What is your name? ")  # also accepts a prompt
+#print("Hello", name, "how are you today?")
+
+# find the area of a circle
+#radius = input("Enter the radius: ")
+#radius = float(radius)
+
+radius = float(input("Enter the radius: "))
+area = math.pi * radius ** 2
+print(area)
 
 
