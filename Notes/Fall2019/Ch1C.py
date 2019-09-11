@@ -123,5 +123,46 @@ print(math.cos(math.pi / 2))  # works in radians
 
 # continued 9/11/19
 
+# area of a circle
+radius = 5
+area = math.pi * radius ** 2
+print(area)
+
+# input function
+'''
+input("Press ENTER to continue")
+
+name = input("What is your name? ")
+print("Nice to meet you", name)
+
+my_number = input("Enter a number: ")
+my_number = float(my_number)  # casting it as an integer or float (changing data type)
+print(my_number + 2)
 
 
+# improved calculator
+print("Area of Circle Calculator")
+radius = float(input("Enter the radius: "))
+area = math.pi * radius ** 2
+print("Area:", area)
+
+
+# degrees to radians
+print("Degrees to Radians Calculator")
+deg = float(input("Enter the degrees: "))
+rad = deg * (math.pi / 180)
+print(deg, "degrees =", rad, "radians")
+'''
+
+# EXTRA STUFF
+x = 2 / 3
+print(x)
+print(round(x, 2))
+
+# concatenation
+name = "Karen"
+print("How are you doing", name + ".")
+
+first = "Francis"
+last = "Parker"
+print(first + last)
