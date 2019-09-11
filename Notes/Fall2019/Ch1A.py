@@ -117,5 +117,25 @@ print(math.pi)
 print(math.cos(math.pi / 2))  # works in radians
 
 
+# continued 9/10/19
+# CUSTOM EQUATIONS
+
+# area of a circle
+radius = 5
+area = math.pi * radius ** 2
+print(area)
+
+# improved
+print()
+print("\nArea of Circle Calculator")
+radius = float(input("Enter the radius: "))  # waits for user to hit enter and "records" value
+area = math.pi * radius ** 2
+print("Area:", area)
 
 
+# Degrees to radians
+print()
+print("Degrees to Radians Calculator")
+degrees = float(input("Enter degrees: "))
+radians = degrees * (math.pi / 180)
+print(degrees, "degrees =", radians, "radians")
