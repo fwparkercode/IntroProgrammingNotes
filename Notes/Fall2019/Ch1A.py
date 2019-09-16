@@ -141,4 +141,14 @@ radians = degrees * (math.pi / 180)
 print(degrees, "degrees =", radians, "radians")
 
 
-#
+#  EXTRA STUFF
+print(2 / 3)
+print(round(2 / 3, 2))
+
+value = 7
+print("Your value is", value, ".")
+# concatenation (gluing two strings together)
+print("Your value is", str(value) + ".")
+
+print("Francis" + "Parker")
+
