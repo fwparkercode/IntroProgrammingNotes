@@ -109,6 +109,7 @@ if b > a and c:
 
 
 # Else and Else If
+'''
 temp = float(input("Enter the temperature: "))
 
 if temp > 90:
@@ -123,3 +124,51 @@ elif temp > 20:
     print("Brrr")
 else:
     print("Chiberia")
+
+
+
+guess = int(input("What number am I thinking of? (0-9)"))
+correct_number = 6
+
+if guess == correct_number:
+    print("You are a mind reader")
+elif guess == correct_number + 1 or guess == correct_number - 1:
+    print("Oh, so close!  The number was", correct_number)
+else:
+    print("Sorry, the number was", correct_number)
+'''
+
+#  Multiple choice question
+print("What is the capital of Illinois?\n")
+
+print("\tA.  Chicago")
+print("\tB.  Springfield")
+print("\tC.  Peoria")
+print("\tD.  Rockford\n")
+
+answer = input("Your answer: ")
+
+if answer.upper() == "B" or answer.lower() == "springfield":
+    print("Correct!")
+elif answer.upper() == "A" or answer.lower() == "chicago":
+    print("It should be.")
+else:
+    print("Sorry, the correct answer is Springfield")
+
+
+#  Case insensitive
+first = "Francis"
+last = "Parker"
+
+print(first)
+print(first.lower())
+print(first.upper(), last.lower())
+
+school = input("What school do you go to?")
+
+if school.lower() == "francis parker" or school.upper() == "FWP" or school.lower() == "parker":
+    print("Yay!  I go there too.")
+elif school.lower() == "latin":
+    print("Sorry")
+else:
+    print("Great! I hear", school, "is a fine institution.")
