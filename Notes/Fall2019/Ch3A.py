@@ -115,3 +115,71 @@ if False:
 if a > c or d:
     print("Written incorrectly")
     print("It's a trap!")
+
+
+# IF ELIF (ELSE IF) ELSE
+
+# ELSE will always run if no other condition met
+'''
+age = int(input("Enter your age: "))
+if age >= 18:
+    print("You can vote")
+else:
+    print("You are", age, "and cannot vote until you are 18")
+
+temp = int(input("Enter the temperature in degrees F: "))
+if temp > 100:
+    print("It is crazy hot outside")
+elif temp > 80:
+    print("it is hot outside.  Great day for the beach.")
+elif temp > 60:
+    print("it is so nice out")
+elif temp > 30:
+    print("it is cool outside")
+else:
+    print("It is freezing out here")
+
+
+# Case Insensitivity
+print("Francis Parker")
+print("Francis Parker".upper())  # makes it all CAPS
+print("Francis Parker".lower())  # makes it all lowercase
+
+name = "Aaron Lee"
+print(name.upper())
+
+
+school = input("Where do you go to school? ")
+
+if school.lower() == "parker" or school.upper() == "FWP" or school.lower() == "francis parker":
+    print("Yay, I go there too!")
+elif school.upper() == "LATIN":
+    print("Good for you.")
+else:
+    print("Great, I hear", school, "is a fine institution.")
+
+
+# QUIZ QUESTION
+answer = float(input("What is 2 + 2? "))
+
+if answer == 2 + 2:
+    print("Correct")
+else:
+    print("Sorry, the answer is 4.")
+'''
+
+print("What is the capital of Illinois?")
+print("\tA. Peoria")
+print("\tB. Chicago")
+print("\tC. Springfield")
+print("\tD. Sandwich")
+
+answer = input("Enter your choice: ")
+
+if answer.lower() == "c" or answer.lower() == "springfield":
+    print("Correct.")
+elif answer.upper() == "B" or answer.upper() == "CHICAGO":
+    print("Wrong, but it should be.  The correct answer is Springfield.")
+else:
+    print("Incorrect.  The answer is Springfield.")
+
