@@ -117,6 +117,7 @@ if a == 6 or 8:
     # It's a TRAP!
 
 #  ELIF (ELSE IF) and ELSE
+'''
 temp = float(input("Enter the temp: "))
 
 if temp > 100:
@@ -131,3 +132,56 @@ elif temp > 0:
     print("BRRR!")
 else:
     print("Chiberia")
+
+
+# Case Insensitive Text
+name = "Francis Parker"
+print(name)
+print(name.lower())
+print(name.upper())
+
+school = input("What school do you go to? ")
+
+if school.lower() == "parker" or school.upper() == "FWP" or school.lower() == "francis parker":
+    print("Yipee!  I go there too.")
+elif school.upper() == "LATIN":
+    print("Good for you.")
+elif school == "":
+    pass
+else:
+    print("Great, I hear that", school, "is a fine institution.")
+
+'''
+# Quiz Questions
+
+print()
+print("Question 1")
+print("What is 24 squared?")
+answer = int(input("Your answer: "))
+
+if answer == 24 ** 2:
+    print("You pass math!")
+else:
+    print("You should know this!, it's", 24 ** 2)
+
+print()
+print("Question 2")
+print("Who is the narrator of Moby Dick")
+print("\tA. Herman Melville")
+print("\tB. Ahab")
+print("\tC. Ishmael")
+print("\tD. Moby")
+
+answer = input("Your Answer: ")
+
+if answer.lower() == "c" or answer.lower() == "ishmael":
+    print("You are correct!")
+elif answer.lower() == "d" or answer.upper() == "MOBY":
+    print("That's the whale!  It was Ishmael.")
+else:
+    print("Incorrect.  It was Ishmael")
+
+
+
+
+
