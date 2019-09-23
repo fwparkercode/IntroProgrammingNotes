@@ -158,16 +158,23 @@ elif school.upper() == "LATIN":
 else:
     print("Great, I hear", school, "is a fine institution.")
 
-
+'''
 # QUIZ QUESTION
+
+score = 0
+
+print()
+print("Question 1")
 answer = float(input("What is 2 + 2? "))
 
 if answer == 2 + 2:
     print("Correct")
+    score += 1
 else:
     print("Sorry, the answer is 4.")
-'''
 
+print()
+print("Question 2")
 print("What is the capital of Illinois?")
 print("\tA. Peoria")
 print("\tB. Chicago")
@@ -178,8 +185,13 @@ answer = input("Enter your choice: ")
 
 if answer.lower() == "c" or answer.lower() == "springfield":
     print("Correct.")
+    score = score + 1
 elif answer.upper() == "B" or answer.upper() == "CHICAGO":
     print("Wrong, but it should be.  The correct answer is Springfield.")
 else:
     print("Incorrect.  The answer is Springfield.")
+
+print()
+print("Congratulations, you scored", score, "out of 2.")
+print("You scored", str(score / 2 * 100) + "%")
 

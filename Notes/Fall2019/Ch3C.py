@@ -139,6 +139,7 @@ else:
 '''
 
 #  Multiple choice question
+score = 0
 print("What is the capital of Illinois?\n")
 
 print("\tA.  Chicago")
@@ -150,11 +151,14 @@ answer = input("Your answer: ")
 
 if answer.upper() == "B" or answer.lower() == "springfield":
     print("Correct!")
+    score += 1
 elif answer.upper() == "A" or answer.lower() == "chicago":
     print("It should be.")
 else:
     print("Sorry, the correct answer is Springfield")
 
+print("You got", score, "out of 1 correct.")
+print("You got", str(score / 1 * 100) + "%")
 
 #  Case insensitive
 first = "Francis"
@@ -172,3 +176,10 @@ elif school.lower() == "latin":
     print("Sorry")
 else:
     print("Great! I hear", school, "is a fine institution.")
+
+
+# Concatenation (need this for the lab)
+first = "Aaron"
+last = "Lee"
+print(first + last)  # smooshes them together.
+

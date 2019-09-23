@@ -154,6 +154,8 @@ else:
 '''
 # Quiz Questions
 
+score = 0
+
 print()
 print("Question 1")
 print("What is 24 squared?")
@@ -161,6 +163,7 @@ answer = int(input("Your answer: "))
 
 if answer == 24 ** 2:
     print("You pass math!")
+    score = score + 1
 else:
     print("You should know this!, it's", 24 ** 2)
 
@@ -176,10 +179,21 @@ answer = input("Your Answer: ")
 
 if answer.lower() == "c" or answer.lower() == "ishmael":
     print("You are correct!")
+    score += 1
 elif answer.lower() == "d" or answer.upper() == "MOBY":
     print("That's the whale!  It was Ishmael.")
 else:
     print("Incorrect.  It was Ishmael")
+
+print()
+print("You got", str(score / 2 * 100) + "%")
+
+# Concatenation
+# smooshing two strings together
+first = "Francis"
+last = "Parker"
+print(first, last)
+print(first + last)  # concatenation
 
 
 
