@@ -83,5 +83,102 @@ for hours in range(24):
 '''
 
 for row in range(1, 21):
-    for seat in range(1, 20):
+    for seat in range(1, 21):
         print("row", row, "seat", seat)
+
+
+# Add all the numbers from 1 to 100
+total = 0
+
+for i in range(1, 101):
+    total += i
+
+print(total)
+
+
+
+# WHILE Loops
+# use a FOR loop if you can.
+# use a WHILE loop when you want to keep going until a condition exists
+
+# count from 1 to 10
+for i in range(1, 11):
+    print(i)
+
+
+i = 1
+
+while i <= 10:
+    print(i)
+    i += 1
+
+
+# print multiples of 7 from 21 to 42
+
+for i in range(21, 43, 7):
+    print(i)
+
+
+i = 21
+
+while i <= 42:
+    print(i)
+    i += 7
+
+
+#  what are all of the squared numbers under 100000
+
+n = 1
+
+while n ** 2 < 100000:
+    print(n, "squared is", n ** 2)
+    n += 1
+
+
+
+#  Beware the infinite loop
+
+'''
+n = 10
+
+while n == 10:
+    print("TEN")
+'''
+
+
+'''
+n = 10
+
+while n > 0:
+    print(n)
+    n *= 2
+'''
+
+'''
+while 4:
+    print("AHHHH")  
+'''
+
+
+# GAME LOOP
+
+done = False
+
+print("Welcome to Dragon Quest 2!")
+
+while not done:
+    answer = input("A dragon is blocking the exit.  Do you want to wake it? ")
+
+    if answer.lower() == "yes" or answer.lower() == "y":
+        print("The dragon eats you!")
+        done = True
+
+print("Thank you for playing")
+
+
+
+
+
+
+
+
