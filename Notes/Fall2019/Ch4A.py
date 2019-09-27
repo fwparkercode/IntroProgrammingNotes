@@ -66,9 +66,134 @@ for i in range(3):
     for j in range(3):
         print("b")
 
+'''
 for hour in range(24):
     for minute in range(60):
         for second in range(60):
             print(hour, minute, second)
+'''
+
+
+# Keeping a running total
+
+# roll a random die (1 to 6)
+roll = random.randrange(1, 7)
+print(roll)
+
+# roll a random die 5 times
+print()
+for i in range(5):
+    roll = random.randrange(1, 7)
+    print(roll)
+
+# add up all 5 dice
+print()
+score = 0
+
+for i in range(5):
+    roll = random.randrange(1, 7)
+    print(roll)
+    score += roll
+
+print("Total:", score)
+
+
+#  Add all the numbers from 1 to 100
+
+total = 0
+
+for i in range(1, 101):
+    total += i
+
+print(total)
+
+#  WHILE loops
+#  When you don't know when you are quitting
+#  Looks like an IF statement
+
+# count 1 to 10
+for i in range(1, 11):
+    print(i)
+
+print()
+
+x = 1
+while x < 11:
+    print(x)
+    x += 1
+
+# count from 20 to 50 by 5's
+x = 20
+while x <= 50:
+    print(x)
+    x += 5
+
+# this one is best done with a WHILE loop
+# print all the perfect squares less than 100000
+
+n = 0
+while n ** 2 < 100000:
+    print(n, "squared is", n ** 2)
+    n += 1
+
+
+# GAME LOOPS - looping until you want to quit
+done = False  # boolean game condition
+
+'''
+print("Welcome to my fun game!")
+while not done:
+    answer = input("Enter Q to quit: ")
+    if answer.lower() == "q":
+        done = True
+    else:
+        print("I hope you are enjoying the game.")
+'''
+
+# BEWARE THE INFINITE LOOP
+# BAD!!!
+
+'''
+done = False
+while not done:
+    print("I am an infinite loop!")
+'''
+
+'''
+n = 5
+while n > 0:
+    print(n)
+    n += 1
+'''
+
+'''
+n = 1 
+
+while n > 0:
+    print(n ** 2)
+    n = n * 2
+    
+'''
+
+'''
+x = 5
+
+while x == 5 or 6:
+    print(x)
+    x += 1
+'''
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

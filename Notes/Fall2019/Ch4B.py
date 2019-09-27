@@ -56,3 +56,144 @@ for i in range(5, 101, 5):
 for i in range(20, 9, -1):
     print(i)
 
+
+# Nested FOR loops
+
+print()
+for i in range(3):
+    print("a")
+for j in range(3):
+    print("b")
+
+print()
+for i in range(3):
+    print("a")
+    for j in range(3):
+        print("b")
+
+x = 0
+for i in range(5):
+    x += 1
+    for j in range(5):
+        x += 1
+
+print(x)
+
+'''
+for hour in range(24):
+    for minute in range(60):
+        for second in range(60):
+            print(hour, minute, second)
+'''
+
+# Keep a running total
+
+# add all the numbers from 1 to 100
+total = 0
+for i in range(1, 101):
+    total += i
+
+print(total)
+
+# roll a die 1 to 6
+roll = random.randrange(1, 7)
+print(roll)
+
+# roll 5 dice
+for i in range(5):
+    roll = random.randrange(1, 7)
+    print(roll)
+print()
+
+# roll 5 dice and find the total
+
+total = 0
+for i in range(5):
+    roll = random.randrange(1, 7)
+    total += roll
+    print(roll)
+print(total)
+
+# WHILE loops
+# Use a FOR loop when you can
+# Use a WHILE loop when you don't know when to quit
+# look a lot like IF statements
+
+# count from 1 to 10
+for i in range(1, 11):
+    print(i)
+
+x = 1
+while x < 11:
+    print(x)
+    x += 1
+
+
+# count from 10 to 50 by 5's
+x = 10
+while x <= 50:
+    print(x)
+    x += 5
+
+
+#  Some problems are best solved with a WHILE
+#  find all of the powers of 2 less than 10,000,000
+
+n = 1
+while 2 ** n < 10000000:
+    print(2 ** n)
+    n += 1
+
+
+# The Game Loop
+print("Welcome to my exciting game!")
+done = False # boolean condition for my game loop
+
+'''
+while not done:
+    answer = input("Press q to Quit: ")
+    if answer.lower() == "q":
+        done = True
+    else:
+        print("I hope you are enjoying the game")
+'''
+
+# BEWARE THE INFINITE LOOP!!
+'''
+while True:
+    print("Infinity and Beyond")
+
+
+x = 10
+while x > 0:
+    print(x)
+    x = x * 2
+'''
+
+
+# for fun
+total = 0
+number_rolls = 0
+
+while total < 30:
+    total = 0
+    for i in range(5):
+        roll = random.randrange(1, 7)
+        total += roll
+        print(roll)
+    print(total)
+    number_rolls += 1
+
+print(number_rolls)
+
+
+
+
+
+
+
+
+
+
+
+
