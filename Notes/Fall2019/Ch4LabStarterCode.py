@@ -1,6 +1,7 @@
 '''
 Chapter 4 Lab
-by Aaron Lee - 2019
+Blah blah blah
+Aaron Lee - 2019
 '''
 
 print('''
@@ -11,14 +12,15 @@ Survive your desert trek and out run the sheriff.
 ''')
 
 # variables
-done = False  # condition for game loop
-miles_traveled = 0
+done = False  # condition for the game loop
+player_position = 0
 thirst = 0
 horse_tiredness = 0
-enemy_miles = -20
+enemy_position = -20
 drinks = 3
 
 while not done:
+
     print()
     print("A. Drink from your canteen.")
     print("B. Ahead moderate speed.")
@@ -32,4 +34,4 @@ while not done:
 
     if answer.lower() == "q":
         done = True
-        print("Thank you for playing")
+        print("Thanks for playing!")
