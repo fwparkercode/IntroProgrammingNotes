@@ -21,6 +21,7 @@ drinks = 3
 
 while not done:
 
+    # ASK QUESTION
     print()
     print("A. Drink from your canteen.")
     print("B. Ahead moderate speed.")
@@ -32,6 +33,15 @@ while not done:
     print()
     answer = input("Enter your choice: ")
 
+    # MAKE CHANGES BASED ON ANSWER
     if answer.lower() == "q":
         done = True
         print("Thanks for playing!")
+    elif answer.lower() == "e":
+        # status check
+        print("Miles traveled:", player_position)
+        print("Drinks in canteen:", drinks)
+        print("The enemy is", player_position - enemy_position, "miles behind you.")
+
+
+    # STATUS AND ENDGAME CHECKS
