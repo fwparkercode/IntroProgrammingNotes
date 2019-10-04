@@ -50,11 +50,7 @@ while not done:
     # --- Drawing code goes here
     screen.fill(WHITE)
 
-    # rect(surface, color, [top_left_x, top_left_y, width, height], optional_thickness)
-    pygame.draw.rect(screen, RED, [0, 0, 100, 50])
-    pygame.draw.rect(screen, BLACK, [0, 0, 100, 50], 3)
-    pygame.draw.rect(screen, GREEN, [600, 400, 100, 100])
-    pygame.draw.rect(screen, CYAN, [550, 350, 100, 100])
+
     
 
     pygame.display.flip()  # updates the screen
