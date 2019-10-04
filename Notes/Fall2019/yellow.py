@@ -16,7 +16,7 @@ BLUE = (0, 0, 255)
 MAGENTA = (255, 0, 255)
 CYAN = (0, 255, 255)
 YELLOW = (255, 255, 0)
-line_width = 20
+line_width = 5
 
 
 SCREEN_WIDTH = 700
