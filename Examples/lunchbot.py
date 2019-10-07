@@ -1,57 +1,28 @@
-#import PyPDF2
-
-import pdftotext
-
-
+import PyPDF2
 import requests
 from pathlib import Path
-
 import datetime
 
 
 url = "https://fwparker.myschoolapp.com/ftpimages/1048/download/download_3453838.pdf"
 response = requests.get(url)
 
-'''
-if response.history:
-    print("Request was redirected")
-    for resp in response.history:
-        print(resp.status_code, resp.url)
-        url = resp.url
-
-    print("Final Destination")
-    print(response.status_code, response.url)
-else:
-    print("Request was not redirected")
-'''
-
 filename = Path('lunch.pdf')
 response = requests.get(url)
 filename.write_bytes(response.content)
 print(url)
 
-# ^^^ Download the PDF from the parker website as 'lunch.pdf'
 
-# creating a pdf file object
-#pdfFileObj = open('lunch.pdf', 'rb')
-
-with open("lunch.pdf", "rb") as f:
-    pdf = pdftotext.PDF(f)
 
 # creating a pdf reader object
-#pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
-
+file_object = open(filename, 'rb')
 
 # creating a page object
-#pageObj = pdfReader.getPage(0)
-menu_text = "\n\n".join(pdf)
-#print(menu_text)
+reader = PyPDF2.PdfFileReader(file_object)
+page_object = reader.getPage(0)
+menu_text = page_object.extractText()
+print(menu_text)
 
-
-
-# extracting text from page
-#menu_text = str(pageObj.extractText())
-#print(menu_text)
 
 menu_list = []
 done = False
@@ -65,6 +36,8 @@ while not done:
     line = menu_text[:(menu_text.index("\n"))]
     menu_text = menu_text[menu_text.index("\n") + 1:]
     menu_list.append(line.strip())
+
+print(menu_list)
 
 monday_list = []
 tuesday_list = []
@@ -94,6 +67,7 @@ for i in range(len(menu_list)):
         friday_index = i
         break
 
+final_index = len(menu_list)  # make it end of doc unless we see second page
 for i in range(len(menu_list)):
     if "second" in menu_list[i].lower():
         final_index = i
@@ -132,7 +106,8 @@ weekday = datetime.date.today().strftime("%A")
 f = open("menu.py", "w")
 
 day_list = [monday, tuesday, wednesday, thursday, friday]
-print(day_list[4])
+print("\n\n\nDAYLIST")
+print(day_list)
 
 f.write("my_list = " + str(day_list))
 f.close()
