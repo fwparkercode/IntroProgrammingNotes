@@ -2,7 +2,5 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Examples/SP19 Student Games/Ryder - Doodle Jump" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Notes/Spring2019/SP2019_FINAL_GAMES/Ryder - Doodle Jump" vcs="Git" />
   </component>
 </project>

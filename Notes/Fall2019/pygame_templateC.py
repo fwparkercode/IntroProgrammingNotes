@@ -4,6 +4,8 @@ Aaron Lee - 2019
 """
 
 import pygame
+import math
+import random
 
 pygame.init()  #  initializes pygame
 
@@ -24,10 +26,10 @@ MAROON = (100, 0, 0)
 BROWN = (100, 50, 50)
 
 
-
 SCREEN_WIDTH = 700
 SCREEN_HEIGHT = 500
 done = False  # condition for my game loop
+
 
 # Set the width and height of the screen [width, height]
 size = (SCREEN_WIDTH, SCREEN_HEIGHT)
@@ -36,6 +38,7 @@ screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Mr. Lee's Game")
 
 clock = pygame.time.Clock()  # creates a clock object that manages updates
+
 
 
 # -------- Main Program Loop -----------
@@ -49,9 +52,6 @@ while not done:
 
     # --- Drawing code goes here
     screen.fill(WHITE)
-
-
-    
 
     pygame.display.flip()  # updates the screen
 
