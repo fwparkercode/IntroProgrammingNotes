@@ -1,6 +1,8 @@
 #  Chapter 7 - Lists (Arrays)
 
 #  Data Types
+import random
+
 my_int = 3478  # counting numbers (pos and neg)
 my_float = 4.9843  # decimal numbers
 my_string = "Hello"  # text
@@ -72,5 +74,12 @@ my_list.append(100)
 print(my_list)
 
 # Create a list of 10 random ints from 5 to 10
+
+my_rando_list = []
+for i in range(10):
+    num = random.randrange(5, 11)
+    my_rando_list.append(num)
+
+print(my_rando_list)
 
 
