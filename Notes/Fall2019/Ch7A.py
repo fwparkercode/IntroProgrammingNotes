@@ -2,6 +2,7 @@
 
 #  Data Types
 import math
+import random
 
 my_int = -378  # counting number
 my_float = 4.348  # decimal number
@@ -168,3 +169,180 @@ for letter in new_encoded_message:
     decoded_message += decoded_char
 
 print(decoded_message)
+
+
+
+#  EXTRA STUFF FROM CHAPTER 6/7
+#  making grids
+
+print("Purple")
+print("Panda")
+
+print("Purple", "Panda")
+print("Purple" + "Panda")
+
+print("Purple", end=" ")  # replace \n which is default ending
+print("Panda")
+
+# Making grids
+
+for i in range(10):
+    print("*", end=" ")
+
+'''
+* * * * * * * * * *
+'''
+
+print("\n")  # double space
+
+for j in range(10):
+    for i in range(10):
+        print("*", end=" ")
+    print()
+
+'''
+* * * * * * * * * *
+* * * * * * * * * *
+* * * * * * * * * *
+* * * * * * * * * *
+* * * * * * * * * *
+* * * * * * * * * *
+* * * * * * * * * *
+* * * * * * * * * *
+'''
+
+print("\n")  # double space
+
+for j in range(10):
+    for i in range(5):
+        print("*", end=" ")
+    print()
+
+'''
+* * * * *
+* * * * *
+* * * * *
+* * * * *
+* * * * *
+* * * * *
+* * * * *
+* * * * *
+* * * * *
+* * * * *
+'''
+
+
+print("\n")  # double space
+
+for j in range(10):
+    for i in range(10):
+        print(i, end=" ")
+    print()
+
+'''
+0 1 2 3 4 5 6 7 8 9
+0 1 2 3 4 5 6 7 8 9
+0 1 2 3 4 5 6 7 8 9
+0 1 2 3 4 5 6 7 8 9
+0 1 2 3 4 5 6 7 8 9
+0 1 2 3 4 5 6 7 8 9
+0 1 2 3 4 5 6 7 8 9
+0 1 2 3 4 5 6 7 8 9
+0 1 2 3 4 5 6 7 8 9
+0 1 2 3 4 5 6 7 8 9
+'''
+
+print("\n")  # double space
+
+for j in range(10):
+    for i in range(10):
+        print(j, end=" ")
+    print()
+
+'''
+0 0 0 0 0 0 0 0 0 0
+1 1 1 1 1 1 1 1 1 1
+2 2 2 2 2 2 2 2 2 2
+3 3 3 3 3 3 3 3 3 3
+4 4 4 4 4 4 4 4 4 4
+5 5 5 5 5 5 5 5 5 5
+6 6 6 6 6 6 6 6 6 6
+7 7 7 7 7 7 7 7 7 7
+8 8 8 8 8 8 8 8 8 8
+9 9 9 9 9 9 9 9 9 9
+'''
+
+print("\n")  # double space
+
+for j in range(10):
+    for i in range(j + 1):
+        print(i, end=" ")
+    print()
+
+'''
+0
+0 1
+0 1 2
+0 1 2 3
+0 1 2 3 4
+0 1 2 3 4 5
+0 1 2 3 4 5 6
+0 1 2 3 4 5 6 7
+0 1 2 3 4 5 6 7 8
+0 1 2 3 4 5 6 7 8 9
+'''
+
+# multiplication table
+print("\n")  # double space
+
+for j in range(1, 10):
+    for i in range(1, 10):
+        if i * j < 10:
+            print(" ", end="")
+        print(i * j, end=" ")
+    print()
+
+
+
+
+#  Roll a die 100 times and record it into a list
+# Go back through the list and count the number of sixes you rolled.
+
+rolls = []
+
+for i in range(1000):
+    die = random.randrange(1, 7)
+    rolls.append(die)
+
+print(rolls)
+
+sixes = 0
+for num in rolls:
+    if num == 6:
+        sixes += 1
+
+print("Sixes:", sixes)
+print("Percent sixes:", str(sixes / len(rolls) * 100) + "%")
+
+
+# Roll a pair of dice 100 times and record it into a 2d list
+# Go back through the list and count the number of sevens.
+# [[1, 4], [2, 3], [5, 6]]
+
+rolls = []
+for i in range(1000):
+    die1 = random.randrange(1, 7)
+    die2 = random.randrange(1, 7)
+    rolls.append([die1, die2])
+
+print(rolls)
+
+sevens = 0
+for roll in rolls:
+    total = roll[0] + roll[1]
+    if total == 7:
+        sevens += 1
+
+print("Sevens:", sevens)
+print("Percent sevens:", sevens / len(rolls) * 100)
+
