@@ -1,5 +1,8 @@
 #  Chapter 7 - Lists (Arrays)
 
+for i in range(10):
+    my_list.append(i)
+
 #  Data Types
 import random
 
@@ -50,7 +53,8 @@ print(my_list)
 
 
 # Lists of lists (2D list)
-my_2d_list = [[11, 12], [13, 14, 15], ["Abe", "Bev", "Cam", "Dan"]]
+my_2d_list = [[11, 12], [13, 14, 15], ["Abe", "Bev", "Cam", "Dan"], "Hi"]
+print(my_2d_list[3])
 print(my_2d_list[0])  # [11, 12]
 print(my_2d_list[0][0])  # 11
 print(my_2d_list[2][2])  # Cam
@@ -194,5 +198,6 @@ for roll in rolls:
 
 print("Sixes:", sixes)
 print(sixes / len(rolls) * 100)
+
 
 

@@ -45,8 +45,9 @@ while not done:
     # --- Game logic should go here
 
     # --- Draw to screen
-    screen.fill(BLACK)
+    screen.fill(WHITE)
 
+    pygame.draw.rect(screen, RED, [0, 0, 50, 50])
 
     pygame.display.flip()  # Go ahead and update the screen with what we've drawn.
 
