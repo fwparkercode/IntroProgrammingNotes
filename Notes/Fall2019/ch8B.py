@@ -34,6 +34,8 @@ pygame.display.set_caption("My Game")
 
 clock = pygame.time.Clock()  # Used to manage how fast the screen updates
 
+rect_x = 0
+change_x = 5
 
 # -------- Main Program Loop -----------
 while not done:
@@ -43,11 +45,24 @@ while not done:
             done = True
 
     # --- Game logic should go here
+    rect_x += change_x
+
+    '''
+    # wrapping around the screen
+    if rect_x > SCREEN_WIDTH:
+        rect_x = -50
+    '''
+
+    # bounce in x
+    if rect_x > SCREEN_WIDTH - 50:
+        change_x *= -1
+    if rect_x < 
+
 
     # --- Draw to screen
     screen.fill(WHITE)
 
-    pygame.draw.rect(screen, RED, [0, 0, 50, 50])
+    pygame.draw.rect(screen, RED, [rect_x, 0, 50, 50])
 
     pygame.display.flip()  # Go ahead and update the screen with what we've drawn.
 
