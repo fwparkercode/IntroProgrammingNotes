@@ -1,6 +1,15 @@
 """
 Pygame base template
 Aaron Lee - 2019
+X linear motion with wrapping (i.e. cars going down road, clouds going by)
+X linear motion with bouncing (i.e. tennis match, eyes looking left right)
+ growing or shrinking (i.e. window rolling down on car)
+ color shift (i.e. sky color shift)
+ blinking (i.e. twinkling stars, flickering candle)
+ color change (flashing lights on fire truck, lights on Christmas tree)
+ acceleration (i.e. gravity fall, bouncing, changing speeds)
+ rotation (requires trig - ferris wheel, clock etc.)
+X animation with lists (i.e. snowfall, leaves falling)
 """
 
 import pygame
@@ -61,26 +70,21 @@ while not done:
     # bounce in x
     if rect_x > SCREEN_WIDTH - 50:
         change_x *= -1
-        my_color = [random.randrange(256), random.randrange(256), random.randrange(256)]
     if rect_x < 0:
         change_x *= -1
-        my_color = [random.randrange(256), random.randrange(256), random.randrange(256)]
 
 
     # bounce in y
     if rect_y > SCREEN_HEIGHT - 50:
         change_y *= -1
-        my_color = [random.randrange(256), random.randrange(256), random.randrange(256)]
-
     if rect_y < 0:
         change_y *= -1
-        my_color = [random.randrange(256), random.randrange(256), random.randrange(256)]
 
 
     # --- Draw to screen
     screen.fill(WHITE)
 
-    pygame.draw.rect(screen, my_color, [rect_x, rect_y, 50, 50])
+    pygame.draw.rect(screen, RED, [rect_x, rect_y, 50, 50])
 
     pygame.display.flip()  # Go ahead and update the screen with what we've drawn.
 
