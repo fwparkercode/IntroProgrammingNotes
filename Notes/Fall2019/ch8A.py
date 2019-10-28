@@ -3,7 +3,7 @@ Chapter 8 - Animation
 Aaron Lee - 2019
 X linear motion with wrapping (i.e. cars going down road, clouds going by)
 X linear motion with bouncing (i.e. tennis match, eyes looking left right)
-growing or shrinking (i.e. window rolling down on car)
+X growing or shrinking (i.e. window rolling down on car)
 color shift (i.e. sky color shift)
 blinking (i.e. twinkling stars, flickering candle)
 color change (flashing lights on fire truck, lights on Christmas tree)
@@ -51,6 +51,7 @@ change_y = 0
 
 rect_width = 50
 
+bg_color = [0, 0, 255]
 
 # -------- Main Program Loop -----------
 while not done:
@@ -62,6 +63,11 @@ while not done:
     # --- Game logic should go here
     rect_x += change_x
     rect_y += change_y
+
+    # growing rect - health/energy bar?
+    rect_width += 1
+    if rect_width > 300:
+        rect_width = 300  # makes it stop
 
     # wrapping around
     '''
@@ -83,10 +89,10 @@ while not done:
         change_y *= -1
 
 
-    # --- Drawing code goes here
-    screen.fill(WHITE)
+    # Color shift - same rules as bouncing or wrapping
+    screen.fill(bg_color)
 
-    pygame.draw.rect(screen, RED, [rect_x, rect_y, 50, 50])
+    pygame.draw.rect(screen, RED, [rect_x, rect_y, rect_width, 50])
 
 
     pygame.display.flip()  # Go ahead and update the screen with what we've drawn.
