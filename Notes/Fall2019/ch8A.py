@@ -1,6 +1,15 @@
 """
 Chapter 8 - Animation
 Aaron Lee - 2019
+X linear motion with wrapping (i.e. cars going down road, clouds going by)
+X linear motion with bouncing (i.e. tennis match, eyes looking left right)
+growing or shrinking (i.e. window rolling down on car)
+color shift (i.e. sky color shift)
+blinking (i.e. twinkling stars, flickering candle)
+color change (flashing lights on fire truck, lights on Christmas tree)
+acceleration (i.e. gravity fall, bouncing, changing speeds)
+rotation (requires trig - ferris wheel, clock etc.)
+X animation with lists (i.e. snowfall, leaves falling)
 """
 
 import pygame
@@ -35,13 +44,13 @@ pygame.display.set_caption("My Game!")
 
 clock = pygame.time.Clock()  # Used to manage how fast the screen updates
 
-rect_x = 0
-change_x = 8
-rect_y = 0
-change_y = 8
+rect_x = 100
+change_x = 0
+rect_y = 100
+change_y = 0
 
-color_list = [RED, GREEN, BLUE]
-color_index = 0
+rect_width = 50
+
 
 # -------- Main Program Loop -----------
 while not done:
@@ -63,27 +72,21 @@ while not done:
     # bouncing rectangle
     if rect_x > SCREEN_WIDTH - 50:
         change_x = change_x * -1
-        color_index += 1
         # change_x *= -1
     if rect_x < 0:
         change_x *= -1
-        color_index += 1
 
 
     if rect_y > SCREEN_HEIGHT - 50:
         change_y = change_y * -1
-        color_index += 1
-
-        # change_x *= -1
     if rect_y < 0:
         change_y *= -1
-        color_index += 1
 
 
     # --- Drawing code goes here
     screen.fill(WHITE)
 
-    pygame.draw.rect(screen, color_list[color_index % len(color_list)], [rect_x, rect_y, 50, 50])
+    pygame.draw.rect(screen, RED, [rect_x, rect_y, 50, 50])
 
 
     pygame.display.flip()  # Go ahead and update the screen with what we've drawn.

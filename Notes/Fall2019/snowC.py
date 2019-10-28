@@ -43,10 +43,11 @@ clock = pygame.time.Clock()  # creates a clock object that manages updates
 snowflakes = []
 
 for i in range(1000):
-    flake_size = 5
+    flake_size = random.randrange(3, 12)
+    flake_speed = flake_size / 3
     flake_x = random.randrange(SCREEN_WIDTH - flake_size)
-    flake_y = random.randrange(SCREEN_HEIGHT - flake_size)
-    snowflakes.append([flake_x, flake_y])
+    flake_y = random.randrange(-flake_size, SCREEN_HEIGHT - flake_size)
+    snowflakes.append([flake_x, flake_y, flake_size, flake_speed])
 
 print(snowflakes)
 
@@ -59,15 +60,16 @@ while not done:
 
     # --- Game logic should go here
     for i in range(len(snowflakes)):
-        snowflakes[i][1] += 1
-        if snowflakes[i][1] > SCREEN_HEIGHT:
-            snowflakes[i][1] = -flake_size
+        snowflakes[i][1] += snowflakes[i][3]
+        if snowflakes[i][1] >= SCREEN_HEIGHT:
+            snowflakes[i][1] = -snowflakes[i][2]
+            snowflakes[i][0] = random.randrange(SCREEN_WIDTH - snowflakes[i][2])
 
     # --- Drawing code goes here
     screen.fill(BLACK)
 
     for flake in snowflakes:
-        pygame.draw.ellipse(screen, WHITE, [flake[0], flake[1], flake_size, flake_size])
+        pygame.draw.ellipse(screen, WHITE, [flake[0], flake[1], flake[2], flake[2]])
 
     # snowman
     pygame.draw.ellipse(screen, WHITE, [23 + 280, 20 + 340, 50, 50])
