@@ -1,6 +1,15 @@
 """
 Pygame Template
 Aaron Lee - 2019
+
+X linear motion with wrapping (i.e. cars going down road, clouds going by)
+X linear motion with bouncing (i.e. tennis match, eyes looking left right)
+ color shift (i.e. sky color shift)
+ blinking (i.e. twinkling stars, flickering candle)
+ color change (flashing lights on fire truck, lights on Christmas tree)
+ acceleration (i.e. gravity fall, bouncing, changing speeds)
+ rotation (requires trig - ferris wheel, clock etc.)
+X animation with lists (i.e. snowfall, leaves falling)
 """
 
 import pygame
@@ -30,7 +39,6 @@ SCREEN_WIDTH = 700
 SCREEN_HEIGHT = 500
 done = False  # condition for my game loop
 
-
 # Set the width and height of the screen [width, height]
 size = (SCREEN_WIDTH, SCREEN_HEIGHT)
 screen = pygame.display.set_mode(size)
@@ -51,6 +59,7 @@ while not done:
         if event.type == pygame.QUIT:
             done = True
 
+
     # --- Game logic should go here
     rect_x += change_x
     rect_y += change_y
@@ -70,7 +79,7 @@ while not done:
     # --- Drawing code goes here
     screen.fill(WHITE)
 
-    pygame.draw.rect(screen, RED, [rect_x, rect_y, 50, 50])
+
 
     pygame.display.flip()  # updates the screen
 
