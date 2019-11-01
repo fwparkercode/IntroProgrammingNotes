@@ -24,6 +24,7 @@ PINK = (255, 200, 200)
 ORANGE = (255, 150, 0)
 MAROON = (100, 0, 0)
 BROWN = (100, 50, 50)
+DARK_GREEN = (0, 150, 0)
 
 
 SCREEN_WIDTH = 700
@@ -51,6 +52,14 @@ for i in range(1000):
 
 print(snowflakes)
 
+
+def draw_tree(x, y, color):
+    pygame.draw.rect(screen, BROWN, [60 + x, 170 + y, 30, 45])
+    pygame.draw.polygon(screen, color, [[150 + x, 170 + y], [75 + x, 20 + y], [x, 170 + y]])
+    pygame.draw.polygon(screen, color, [[140 + x, 120 + y], [75 + x, y], [10 + x, 120 + y]])
+
+
+
 # -------- Main Program Loop -----------
 while not done:
     # --- Main event loop (input from user mouse, keyboard, controller)
@@ -67,6 +76,13 @@ while not done:
 
     # --- Drawing code goes here
     screen.fill(BLACK)
+
+    for x in range(25, SCREEN_WIDTH, 100):
+        draw_tree(x, 200, DARK_GREEN)  # call the function
+
+    for x in range(0, SCREEN_WIDTH, 100):
+        draw_tree(x, 300, GREEN)  # call the function
+
 
     for flake in snowflakes:
         pygame.draw.ellipse(screen, WHITE, [flake[0], flake[1], flake[2], flake[2]])
