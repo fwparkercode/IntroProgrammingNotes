@@ -46,10 +46,10 @@ while not done:
             done = True
     # --- Game logic should go here
     for i in range(len(snowflakes)):
-        snowflakes[i][0] += 0.1  # change y value
-        if snowflakes[i][0] > SCREEN_WIDTH:
-            snowflakes[i][0] = -flake_size  # resets to top of screen
-            snowflakes[i][1] = random.randrange(SCREEN_HEIGHT)
+        snowflakes[i][1] += snowflakes[i][3]  # change y value
+        if snowflakes[i][1] > SCREEN_HEIGHT:
+            snowflakes[i][1] = -flake_size  # resets to top of screen
+            snowflakes[i][0] = random.randrange(SCREEN_WIDTH)
             depth += 0.005
 
     # --- Draw to screen
