@@ -1,3 +1,4 @@
+
 # Example 1
 def a():
     print("A")
@@ -14,6 +15,9 @@ def c():
 a()
 
 print("\n")
+
+
+
 
 # Example 2
 def a():
@@ -52,6 +56,8 @@ def c():
 
 a()
 
+
+
 print("\n")
 
 
@@ -76,6 +82,7 @@ a()
 
 print("\n")
 
+
 # Example 5
 def a(x):
     print("A start, x =", x)
@@ -97,7 +104,7 @@ a(5)
 
 print("\n")
 
-'''
+
 # Example 6
 def a(x):
     x = x + 1
@@ -109,6 +116,7 @@ a(x)
 print(x)
 
 print("\n")
+
 
 
 # Example 7
@@ -138,6 +146,8 @@ print(x)
 
 print("\n")
 
+
+
 # Example 9
 def a(x, y):
     x = x + 1
@@ -150,6 +160,8 @@ y = 20
 a(y, x)
 
 print("\n")
+
+
 
 # Example 10
 def a(x, y):
@@ -164,6 +176,7 @@ y = 20
 z = a(x, y)
 
 print(z)
+
 
 print("\n")
 
@@ -181,6 +194,8 @@ z = a(x, y)
 print(z)
 
 print("\n")
+
+
 
 # Example 12
 def a(x, y):
@@ -243,4 +258,3 @@ print("global scope, list =", my_list)
 a(my_list)
 print("global scope, list =", my_list)
 
-'''

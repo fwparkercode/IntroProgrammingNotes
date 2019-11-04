@@ -3,6 +3,8 @@ import math
 
 # Functions are repeatable
 # help us organize our code.
+import random
+
 
 def say_hi(name):
     print("Hello", name)
@@ -91,6 +93,37 @@ def f(y):
 print(x)  # prints global x
 x = f(x)  # return and capture, set global x to returned value
 print(x)
+
+
+
+# Multiple returns
+def coin_flip():
+    if random.randrange(2) == 0:
+        return "Heads"
+    else:
+        return "Tails"
+    print("This line won't print")  # code is unreachable after the return
+
+print(coin_flip())
+
+
+
+# Returning multiple items
+
+def sum_product(n1, n2):
+    '''returns the sum and product of n1 and n2'''
+    my_sum = n1 + n2
+    my_product = n1 * n2
+    return my_sum, my_product  # how we return multiple items
+
+print(sum_product(5, 8))  # returns a tuple
+
+result = sum_product(3, 4)
+print(result[0])  # sum
+print(result[1])  # product
+
+my_sum, my_product = sum_product(7, 9)  # python way of doing it
+
 
 
 
