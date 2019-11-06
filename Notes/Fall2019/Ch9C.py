@@ -109,3 +109,24 @@ def coin_toss():
         return "Tails"
 
 print(coin_toss())
+
+
+# Function that returns the smallest number in a list
+def min(my_list):
+    smallest = my_list[0]
+    for number in my_list:
+        if number < smallest:
+            smallest = number
+    return smallest
+
+print(min([1, 4, 2, -5, 4, 2, 7]))
+
+
+def yahtzee_roll():
+    roll_list = []
+    ...
+
+print(yahtzee_roll())
+# [2, 4, 2, 1, 6]
+
+

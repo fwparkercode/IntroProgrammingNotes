@@ -107,10 +107,10 @@ print("\n")
 
 # Example 6
 def a(x):
-    x = x + 1
+    x = x + 1  # local
 
 
-x = 3
+x = 3  # global
 a(x)
 
 print(x)
