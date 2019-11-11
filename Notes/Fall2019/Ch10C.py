@@ -43,20 +43,38 @@ pygame.mouse.set_visible(False)
 
 rect_x = 0
 rect_y = 0
+rect_color = RED
 
-trail = []
+ellipse_x = 0
+ellipse_y = 0
+change_x = 0
+change_y = 0
 
 # -------- Main Program Loop -----------
 while not done:
     # --- Main event loop (input from user mouse, keyboard, controller)
+    # You can only have one event loop
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            print(event.pos, event.button)
+            rect_color = BLUE
+        elif event.type == pygame.MOUSEBUTTONUP:
+            rect_color = RED
+        elif event.type == pygame.MOUSEMOTION:
+            #rect_color = GREEN
+            print(event.pos, event.rel, event.buttons)
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_RIGHT:
+                change_x = 3
+
 
     # --- Game logic should go here
-    pos = pygame.mouse.get_pos()
-    rect_x, rect_y = pos
+    ellipse_x += change_x
+    ellipse_y += change_y
 
+    rect_x, rect_y = pygame.mouse.get_pos()
 
 
     if rect_x > SCREEN_WIDTH - 30:
@@ -68,7 +86,8 @@ while not done:
     screen.fill(WHITE)
 
 
-    pygame.draw.rect(screen, BLACK, [rect_x, rect_y, 30, 30])
+    pygame.draw.rect(screen, rect_color, [rect_x, rect_y, 30, 30])
+    pygame.draw.ellipse(screen, MAGENTA, [ellipse_x, ellipse_y, 30, 30])
 
     pygame.display.flip()  # updates the screen
 
