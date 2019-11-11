@@ -122,11 +122,14 @@ def min(my_list):
 print(min([1, 4, 2, -5, 4, 2, 7]))
 
 
-def yahtzee_roll():
-    roll_list = []
-    ...
 
-print(yahtzee_roll())
-# [2, 4, 2, 1, 6]
+
+
+
+
+
+
+
+
 
 

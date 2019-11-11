@@ -155,4 +155,25 @@ print(sum, product)
 
 
 
+def yahtzee_roll():
+    my_roll = []
+    # append to this list
+    return my_roll
+
+print(yahtzee_roll())  # we want to see [1, 2, 3, 4, 5]
+
+def create_list(size):
+    roll_list = []
+    # fill this list with size number of yahtzee_rolls
+    return roll_list
+
+create_list(3)
+
+def is_yahtzee(roll):
+    # check if all five are the same
+    return True # or false
+
+
+# LAST PART
+yahtzee_list = create_list(100000)
 
