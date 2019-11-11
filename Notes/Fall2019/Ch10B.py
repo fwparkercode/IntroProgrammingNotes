@@ -40,6 +40,8 @@ rect_color = RED
 
 ellipse_x = 0
 ellipse_y = 0
+change_x = 0
+change_y = 0
 
 pygame.mouse.set_visible(False)  # make mouse disappear
 
@@ -56,8 +58,28 @@ while not done:
             print(event.button) # which button was pressed
         elif event.type == pygame.MOUSEBUTTONUP:
             rect_color = RED
+        elif event.type == pygame.MOUSEMOTION:
+            pass
+            #print(event.rel)  # speed of your mouse as tuple
+        elif event.type == pygame.KEYDOWN:  # pressed key
+            if event.key == pygame.K_RIGHT:
+                change_x = 3
+            if event.key == pygame.K_LEFT:
+                change_x = -3
+            if event.key == pygame.K_DOWN:
+                change_y = 3
+            if event.key == pygame.K_UP:
+                change_y = -3
+        elif event.type == pygame.KEYUP: # lifted my finger
+            if event.key == pygame.K_RIGHT or event.key == pygame.K_LEFT:
+                change_x = 0
+            if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
+                change_y = 0
 
     # --- Game logic should go here
+    ellipse_x += change_x
+    ellipse_y += change_y
+
     rect_x, rect_y = pygame.mouse.get_pos()
 
     # boundary check
