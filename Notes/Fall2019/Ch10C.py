@@ -68,11 +68,32 @@ while not done:
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RIGHT:
                 change_x = 3
+            elif event.key == pygame.K_LEFT:
+                change_x = -3
+            elif event.key == pygame.K_DOWN:
+                change_y = 3
+            elif event.key == pygame.K_UP:
+                change_y = -3
+        elif event.type == pygame.KEYUP:  # lift finger off key
+            if event.key == pygame.K_RIGHT or event.key == pygame.K_LEFT:
+                change_x = 0
+            elif event.key == pygame.K_UP or event.key == pygame.K_DOWN:
+                change_y = 0
 
 
     # --- Game logic should go here
     ellipse_x += change_x
     ellipse_y += change_y
+
+    # keyboard boundary checks
+    if ellipse_x > SCREEN_WIDTH - 30:
+        ellipse_x = SCREEN_WIDTH - 30
+    if ellipse_y > SCREEN_HEIGHT - 30:
+        ellipse_y = SCREEN_HEIGHT - 30
+    if ellipse_y < 0:
+        ellipse_y = 0
+    if ellipse_x < 0:
+        ellipse_x = 0
 
     rect_x, rect_y = pygame.mouse.get_pos()
 
