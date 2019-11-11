@@ -110,6 +110,14 @@ while not done:
     pygame.draw.rect(screen, rect_color, [rect_x, rect_y, 30, 30])
     pygame.draw.ellipse(screen, GREEN, [ellipse_x, ellipse_y, 30, 30])
 
+    # happy face
+    pygame.draw.ellipse(screen, BLACK, [298, 198, 44, 44])
+    pygame.draw.ellipse(screen, YELLOW, [300, 200, 40, 40])
+    pygame.draw.circle(screen, BLACK, [313, 214], 3)
+    pygame.draw.circle(screen, BLACK, [327, 214], 3)
+    pygame.draw.line(screen, BLACK, [313, 226], [327, 226], 3)
+
+
     pygame.display.flip()  # Go ahead and update the screen with what we've drawn.
 
     clock.tick(60)  # limit to 60 frames per second

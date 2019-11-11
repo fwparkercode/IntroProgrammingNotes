@@ -56,10 +56,8 @@ while not done:
     # --- Game logic should go here
     pos = pygame.mouse.get_pos()
     rect_x, rect_y = pos
-    trail.append(pos)
 
-    if len(trail) > 10:
-        trail.pop(0)
+
 
     if rect_x > SCREEN_WIDTH - 30:
         rect_x = SCREEN_WIDTH - 30
@@ -68,11 +66,7 @@ while not done:
 
     # --- Drawing code goes here
     screen.fill(WHITE)
-    color = 255
 
-    for box in trail:
-        color -= 25
-        pygame.draw.rect(screen, (color, color, color), [box[0], box[1], 30, 30])
 
     pygame.draw.rect(screen, BLACK, [rect_x, rect_y, 30, 30])
 

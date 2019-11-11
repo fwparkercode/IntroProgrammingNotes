@@ -88,6 +88,16 @@ while not done:
     if rect_y > SCREEN_HEIGHT - 20:
         rect_y = SCREEN_HEIGHT - 20
 
+    # boundary check for ellipse
+    if ellipse_x < 0:
+        ellipse_x = 0
+    if ellipse_x > SCREEN_WIDTH - 20:
+        ellipse_x = SCREEN_WIDTH - 20
+    if ellipse_y < 0:
+        ellipse_y = 0
+    if ellipse_y > SCREEN_HEIGHT - 20:
+        ellipse_y = SCREEN_HEIGHT - 20
+
     #print(pos[0])
 
     # --- Draw to screen
