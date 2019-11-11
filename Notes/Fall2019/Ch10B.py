@@ -36,15 +36,26 @@ clock = pygame.time.Clock()  # Used to manage how fast the screen updates
 
 rect_x = 0
 rect_y = 0
+rect_color = RED
+
+ellipse_x = 0
+ellipse_y = 0
 
 pygame.mouse.set_visible(False)  # make mouse disappear
 
 # -------- Main Program Loop -----------
 while not done:
     # --- Main event loop (input from user keyboard, mouse, game controller)
+    # can only occur once in your loop
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            rect_color = BLUE
+            print(event.pos)  # where was button pressed
+            print(event.button) # which button was pressed
+        elif event.type == pygame.MOUSEBUTTONUP:
+            rect_color = RED
 
     # --- Game logic should go here
     rect_x, rect_y = pygame.mouse.get_pos()
@@ -59,7 +70,8 @@ while not done:
 
     # --- Draw to screen
     screen.fill(BLACK)
-    pygame.draw.rect(screen, RED, [rect_x, rect_y, 20, 20])
+    pygame.draw.rect(screen, rect_color, [rect_x, rect_y, 20, 20])
+    pygame.draw.ellipse(screen, GREEN, [ellipse_x, ellipse_y, 20, 20])
 
     pygame.display.flip()  # Go ahead and update the screen with what we've drawn.
 
