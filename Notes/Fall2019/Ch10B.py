@@ -45,6 +45,24 @@ change_y = 0
 
 pygame.mouse.set_visible(False)  # make mouse disappear
 
+def draw_stickman(x, y):
+    x -= 95  # correction for x position
+    y -= 83
+    # Head
+    pygame.draw.ellipse(screen, BLACK, [96 + x, 83 + y, 10, 10], 0)
+
+    # Legs
+    pygame.draw.line(screen, BLACK, [100 + x, 100 + y], [105 + x, 110 + y], 2)
+    pygame.draw.line(screen, BLACK, [100 + x, 100 + y], [95 + x, 110 + y], 2)
+
+    # Body
+    pygame.draw.line(screen, RED, [100 + x, 100 + y], [100 + x, 90 + y], 2)
+
+    # Arms
+    pygame.draw.line(screen, RED, [100 + x, 90 + y], [104 + x, 100 + y], 2)
+    pygame.draw.line(screen, RED, [100 + x, 90 + y], [96 + x, 100 + y], 2)
+
+
 # -------- Main Program Loop -----------
 while not done:
     # --- Main event loop (input from user keyboard, mouse, game controller)
@@ -76,6 +94,7 @@ while not done:
             if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
                 change_y = 0
 
+
     # --- Game logic should go here
     ellipse_x += change_x
     ellipse_y += change_y
@@ -101,7 +120,8 @@ while not done:
     #print(pos[0])
 
     # --- Draw to screen
-    screen.fill(BLACK)
+    screen.fill(WHITE)
+    draw_stickman(0, 0)
     pygame.draw.rect(screen, rect_color, [rect_x, rect_y, 20, 20])
     pygame.draw.ellipse(screen, GREEN, [ellipse_x, ellipse_y, 20, 20])
 
