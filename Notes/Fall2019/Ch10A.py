@@ -45,6 +45,17 @@ change_y = 0
 
 pygame.mouse.set_visible(False)
 
+def draw_happy(x, y):
+    # draws a happy face
+    x -= 298
+    y -= 198
+    pygame.draw.ellipse(screen, BLACK, [298 + x, 198 + y, 44, 44])
+    pygame.draw.ellipse(screen, YELLOW, [300 + x, 200 + y, 40, 40])
+    pygame.draw.circle(screen, BLACK, [313 + x, 214 + y], 3)
+    pygame.draw.circle(screen, BLACK, [327 + x, 214 + y], 3)
+    pygame.draw.line(screen, BLACK, [313 + x, 226 + y], [327 + x, 226 + y], 3)
+
+
 # -------- Main Program Loop -----------
 while not done:
     # --- Main event loop (input from user keyboard, mouse, game controller)
@@ -109,14 +120,7 @@ while not done:
 
     pygame.draw.rect(screen, rect_color, [rect_x, rect_y, 30, 30])
     pygame.draw.ellipse(screen, GREEN, [ellipse_x, ellipse_y, 30, 30])
-
-    # happy face
-    pygame.draw.ellipse(screen, BLACK, [298, 198, 44, 44])
-    pygame.draw.ellipse(screen, YELLOW, [300, 200, 40, 40])
-    pygame.draw.circle(screen, BLACK, [313, 214], 3)
-    pygame.draw.circle(screen, BLACK, [327, 214], 3)
-    pygame.draw.line(screen, BLACK, [313, 226], [327, 226], 3)
-
+    draw_happy(0, 0)
 
     pygame.display.flip()  # Go ahead and update the screen with what we've drawn.
 
