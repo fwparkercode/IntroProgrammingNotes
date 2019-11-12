@@ -50,6 +50,24 @@ ellipse_y = 0
 change_x = 0
 change_y = 0
 
+def draw_stickman(x, y):
+    x -= 95
+    y -= 83
+    # Head
+    pygame.draw.ellipse(screen, BLACK, [96 + x, 83 + y, 10, 10], 0)
+
+    # Legs
+    pygame.draw.line(screen, BLACK, [100 + x, 100 + y], [105 + x, 110 + y], 2)
+    pygame.draw.line(screen, BLACK, [100 + x, 100 + y], [95 + x, 110 + y], 2)
+
+    # Body
+    pygame.draw.line(screen, RED, [100 + x, 100 + y], [100 + x, 90 + y], 2)
+
+    # Arms
+    pygame.draw.line(screen, RED, [100 + x, 90 + y], [104 + x, 100 + y], 2)
+    pygame.draw.line(screen, RED, [100 + x, 90 + y], [96 + x, 100 + y], 2)
+
+
 # -------- Main Program Loop -----------
 while not done:
     # --- Main event loop (input from user mouse, keyboard, controller)
@@ -109,6 +127,8 @@ while not done:
 
     pygame.draw.rect(screen, rect_color, [rect_x, rect_y, 30, 30])
     pygame.draw.ellipse(screen, MAGENTA, [ellipse_x, ellipse_y, 30, 30])
+    draw_stickman(0, 0)
+
 
     pygame.display.flip()  # updates the screen
 
