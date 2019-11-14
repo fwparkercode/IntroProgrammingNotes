@@ -63,29 +63,29 @@ while not done:
         if event.type == pygame.QUIT:
             done = True
         # MOUSE STUFF
-        if event.type == pygame.MOUSEBUTTONDOWN:
+        elif event.type == pygame.MOUSEBUTTONDOWN:
             print(event.button)  # event.button tells me which button was pressed
             print(event.pos)  # position of the mouse press
             rect_color = BLUE
-        if event.type == pygame.MOUSEBUTTONUP:
+        elif event.type == pygame.MOUSEBUTTONUP:
             rect_color = RED
-        if event.type == pygame.MOUSEMOTION:
+        elif event.type == pygame.MOUSEMOTION:
             pass
             #print(event.rel)  # maybe use this for more advanced game
         # KEYBOARD STUFF
-        if event.type == pygame.KEYDOWN:  # pressed a key
+        elif event.type == pygame.KEYDOWN:  # pressed a key
             if event.key == pygame.K_UP:
                 change_y = -5
-            if event.key == pygame.K_DOWN:
+            elif event.key == pygame.K_DOWN:
                 change_y = 5
-            if event.key == pygame.K_RIGHT:
+            elif event.key == pygame.K_RIGHT:
                 change_x = 5
-            if event.key == pygame.K_LEFT:
+            elif event.key == pygame.K_LEFT:
                 change_x = -5
-        if event.type == pygame.KEYUP:  # lifted my finger
+        elif event.type == pygame.KEYUP:  # lifted my finger
             if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
                 change_y = 0
-            if event.key == pygame.K_RIGHT or event.key == pygame.K_LEFT:
+            elif event.key == pygame.K_RIGHT or event.key == pygame.K_LEFT:
                 change_x = 0
 
 
