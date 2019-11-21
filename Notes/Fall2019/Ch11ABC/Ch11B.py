@@ -44,6 +44,7 @@ bg_music = pygame.mixer.Sound("bgMusic.wav")
 bg_music.play(-1)  # plays forever with -1
 bg_music.set_volume(0.5)
 
+
 fireball_sound = pygame.mixer.Sound("fireball.wav")
 
 dragon_x = 0
@@ -56,11 +57,12 @@ while not done:
         if event.type == pygame.QUIT:
             done = True
         if event.type == pygame.MOUSEBUTTONDOWN:
-            fireball_sound.play()
-
+            if event.pos[1] < 200:
+                fireball_sound.play()
 
     # --- Game logic should go here
     dragon_x, dragon_y = pygame.mouse.get_pos()
+
 
     # --- Draw to screen
     #screen.fill(BLACK)
