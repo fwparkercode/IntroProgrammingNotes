@@ -13,6 +13,9 @@
 
 
 #  Bank Account
+import random
+
+
 class BankAccount():
     interest_rate = 0.01
     balance = 0
@@ -53,8 +56,55 @@ my_savings = BankAccount("Savings", 50)
 my_savings.transfer_to(77, my_checking)
 print(my_savings.balance)
 
+
+
 # Classes cont. (11/22)
 
+#  Monopoly
+
+class Player():
+    money = 1500
+    property_list = []
+    token = "Dog"
+    in_jail = False
+    space = 0
+
+    def __init__(self, token):
+        self.token = token
+        print(token, "has joined the game")
+
+    def pass_go(self):
+        self.money += 200
+        print(self.token, "passed GO.  Collect 200 dollars!")
+
+    def buy_property(self, amount, property):
+        self.property_list.append(property)
+        self.money -= amount
+        print(self.token, "bought", property, "for", amount, "dollars.")
+
+    def roll_dice(self):
+        die1 = random.randrange(1, 7)
+        die2 = random.randrange(1, 7)
+        self.space += die1 + die2
+        print(self.token, "rolled a", die1 + die2)
+
+    def pay_rent(self, rent, other):
+        self.money -= rent
+        other.money += rent
+        print(self.token, "paid", other.token, rent, "dollars.")
 
 
+player_1 = Player("Top Hat")
+player_1.money += 200  # dot notation to change attributes
+print(player_1.money)
+player_1.pass_go()
+print(player_1.money)
+
+player_2 = Player("Ship")
+player_2.buy_property(110, "Baltic Ave")
+print(player_2.money, player_2.property_list)
+player_2.roll_dice()
+print(player_2.space)
+player_2.pay_rent(77, player_1)
+print(player_2.money, player_1.money)
 
