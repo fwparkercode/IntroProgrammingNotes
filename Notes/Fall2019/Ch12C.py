@@ -70,4 +70,51 @@ player1.roll_dice()
 
 
 
+#  Hero and Enemy  11/22
+class Character():
+    def __init__(self, name):
+        print("A character named", name, "has been added to the game.")
+        self.gold = 0
+        self.health = 50
+        self.name = name
+        self.inventory = []
+    def attack(self, other, damage):
+        if other.health > 0:
+            other.health -= damage
+            print(self.name, "attacked", other.name, "for", damage, "damage")
+            if other.health <= 0:
+                self.gold += other.gold
+                print(self.name, "killed", other.name, "and took", other.gold, "gold")
+        else:
+            print(other.name, "is already dead.")
+    def add_item(self, item):
+        self.inventory.append(item)
+
+class Hero(Character):
+    def __init__(self, name):
+        super().__init__(name)
+        print("A hero is born")
+
+class Enemy(Character):
+    def __init__(self, name):
+        super().__init__(name)
+        print("An enemy has spawned")
+        self.evilness = 1000
+
+class Vampire(Enemy):
+    def __init__(self, name):
+        super().__init__(name)
+        print("A vampire has risen.")
+        self.form = "human"
+    def change_form(self):
+        if self.form == "human":
+            self.form = "bat"
+        else:
+            self.form = "human"
+        print(self.name, "changed to", self.form, "form.")
+
+
+townsperson = Character("Townie")
+hero = Hero("Hiro")
+vampire = Vampire("Dracula")
 
