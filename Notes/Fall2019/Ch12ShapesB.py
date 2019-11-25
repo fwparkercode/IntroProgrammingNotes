@@ -59,12 +59,39 @@ class Ball(Circle):
         super().__init__()
         rg = random.randrange(256)  # random green and blue color
         self.color = (rg, rg, 255)
+        self.change_y = random.random() * 4 - 2
+        self.gravity = 0.1
+        self.elasticity = 0.8
+
+    def change_color(self):
+        self.color = (random.randrange(256), random.randrange(256), random.randrange(256))
+
+    def update(self):
+        # move in x
+        self.x += self.change_x
+        if self.x > SCREEN_WIDTH - self.diameter:
+            self.change_color()
+            self.x = SCREEN_WIDTH - self.diameter
+            self.change_x *= -self.elasticity
+        if self.x < 0:
+            self.change_color()
+            self.x = 0
+            self.change_x *= -self.elasticity
+
+        # move in y
+        self.change_y += self.gravity
+        self.y += self.change_y
+        if self.y > SCREEN_HEIGHT - self.diameter:
+            self.y = SCREEN_HEIGHT - self.diameter
+            self.change_y *= -self.elasticity
+            self.change_x *= self.elasticity
+
 
 
 
 shape_list = []
 
-for i in range(100):
+for i in range(20):
     my_circle = Circle()
     my_circle.x = random.randrange(SCREEN_WIDTH - my_circle.diameter)
     my_circle.y = random.randrange(SCREEN_HEIGHT - my_circle.diameter)
