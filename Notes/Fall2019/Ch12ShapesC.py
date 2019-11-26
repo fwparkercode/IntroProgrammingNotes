@@ -86,6 +86,12 @@ class Bouncies(Circle):
             self.change_x *= self.elasticity
 
 
+class Bubble(Circle):
+    def update(self):
+        self.y -= random.random()
+
+
+
 shape_list = []
 
 for i in range(100):
@@ -108,6 +114,16 @@ while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 1:
+                my_bubble = Bubble()
+                my_bubble.diameter = random.randrange(10, 100)
+                my_bubble.x, my_bubble.y = event.pos
+                my_bubble.x -= my_bubble.diameter / 2
+                my_bubble.y -= my_bubble.diameter / 2
+                rg = random.randrange(256)
+                my_bubble.color = [rg, rg, 255]
+                shape_list.append(my_bubble)
 
     # --- Game logic should go here
     for shape in shape_list:
