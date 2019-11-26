@@ -63,14 +63,27 @@ class Bouncies(Circle):
         self.x = random.randrange(SCREEN_WIDTH - self.diameter)
         self.y = random.randrange(SCREEN_HEIGHT - self.diameter)
         self.change_x = random.randrange(-10, 10)
-        self.change_y = random.random() * 6 - 3
+        self.change_y = random.random() * 10 - 5
+        self.gravity = 0.1
+        self.elasticity = 0.8
 
     def update(self):
         # move in x
         self.x += self.change_x
+        if self.x > SCREEN_WIDTH - self.diameter:
+            self.x = SCREEN_WIDTH - self.diameter
+            self.change_x *= -1
+        if self.x < 0:
+            self.x = 0
+            self.change_x *= -1
 
         # move in y
+        self.change_y += self.gravity
         self.y += self.change_y
+        if self.y > SCREEN_HEIGHT - self.diameter:
+            self.y = SCREEN_HEIGHT - self.diameter
+            self.change_y *= -self.elasticity
+            self.change_x *= self.elasticity
 
 
 shape_list = []
@@ -82,7 +95,7 @@ for i in range(100):
     my_circle.diameter = random.randrange(10, 100)
     rb = random.randrange(200)
     my_circle.color = (rb, 200, rb)
-    shape_list.append(my_circle)
+    #shape_list.append(my_circle)
 
     my_bouncy = Bouncies()
     shape_list.append(my_bouncy)
