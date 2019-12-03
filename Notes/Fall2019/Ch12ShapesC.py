@@ -87,8 +87,43 @@ class Bouncies(Circle):
 
 
 class Bubble(Circle):
+    def __init__(self):
+        super().__init__()
+        self.red = 0
+        self.red_speed = 1
+        self.green = 0
+        self.green_speed = 2
+        self.blue = 0
+        self.blue_speed = 3
     def update(self):
         self.y -= random.random()
+
+        self.red += self.red_speed
+        if self.red > 255:
+            self.red = 255
+            self.red_speed *= -1
+        if self.red < 0:
+            self.red = 0
+            self.red_speed *= -1
+
+        self.green += self.green_speed
+        if self.green > 255:
+            self.green = 255
+            self.green_speed *= -1
+        if self.green < 0:
+            self.green = 0
+            self.green_speed *= -1
+
+        self.blue += self.blue_speed
+        if self.blue > 255:
+            self.blue = 255
+            self.blue_speed *= -1
+        if self.blue < 0:
+            self.blue = 0
+            self.blue_speed *= -1
+
+        self.color = (self.red, self.green, self.blue)
+
 
 
 
@@ -105,7 +140,6 @@ for i in range(100):
 
     my_bouncy = Bouncies()
     shape_list.append(my_bouncy)
-
 
 
 # -------- Main Program Loop -----------

@@ -108,3 +108,24 @@ print(player_2.space)
 player_2.pay_rent(77, player_1)
 print(player_2.money, player_1.money)
 
+
+class Character():
+    def __init__(self, name):
+        self.name = name
+        self.health = 100
+        self.gold = 0
+
+class Enemy(Character):
+    def __init__(self, name):
+        super().__init__(name)
+        self.evilness = 1000
+
+    def attack(self, damage, other):
+        other.health -= damage
+
+
+enemy1 = Enemy("Joe")
+print(enemy1.name)
+
+
+

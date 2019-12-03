@@ -87,6 +87,9 @@ class Ball(Circle):
             self.change_x *= self.elasticity
 
 
+class Bubble(Circle):
+    def update(self):
+        self.y -= random.random()
 
 
 shape_list = []
@@ -108,6 +111,13 @@ while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            my_bubble = Bubble()
+            my_bubble.color = BLUE
+            my_bubble.x, my_bubble.y = event.pos
+            my_bubble.x -= my_bubble.diameter / 2  # center on mouse click
+            my_bubble.y -= my_bubble.diameter / 2
+            shape_list.append(my_bubble)
 
     # --- Game logic should go here
     for shape in shape_list:

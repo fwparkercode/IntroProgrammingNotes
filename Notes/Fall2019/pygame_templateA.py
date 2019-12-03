@@ -4,8 +4,6 @@ Aaron Lee - 2019
 """
 
 import pygame
-pygame.init()  # initializes pygame (need to do this before you use it)
-
 
 # Global Variables
 BLACK = (0, 0, 0)
@@ -22,18 +20,19 @@ MAROON = (100, 0, 0)
 ORANGE = (255, 150, 0)
 PURPLE = (100, 50, 150)
 
+def initialization():
+    global SCREEN_WIDTH, SCREEN_HEIGHT, done, screen, clock
+    pygame.init()  # initializes pygame (need to do this before you use it)
+    SCREEN_WIDTH = 700
+    SCREEN_HEIGHT = 500
+    done = False  # Loop until the user clicks the close button.
 
-SCREEN_WIDTH = 700
-SCREEN_HEIGHT = 500
-done = False  # Loop until the user clicks the close button.
+    size = (SCREEN_WIDTH, SCREEN_HEIGHT)  # Set the width and height of the screen [width, height]
+    screen = pygame.display.set_mode(size)
+    pygame.display.set_caption("My Game!")
+    clock = pygame.time.Clock()  # Used to manage how fast the screen updates
 
-
-size = (SCREEN_WIDTH, SCREEN_HEIGHT)  # Set the width and height of the screen [width, height]
-screen = pygame.display.set_mode(size)
-
-pygame.display.set_caption("My Game!")
-
-clock = pygame.time.Clock()  # Used to manage how fast the screen updates
+initialization()
 
 # -------- Main Program Loop -----------
 while not done:

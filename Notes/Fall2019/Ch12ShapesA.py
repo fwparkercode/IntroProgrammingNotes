@@ -71,6 +71,17 @@ class Circle():
             self.change_x *= self.elasticity
 
 
+class Bubble(Circle):
+    def update(self):
+        self.y -= random.random()
+
+class Wrapper(Circle):
+    def update(self):
+        self.x += self.change_x
+        if self.x > SCREEN_WIDTH:
+            self.x = -self.diameter
+
+
 shape_list = []
 for i in range(20):
     my_circle = Circle()
@@ -81,6 +92,15 @@ for i in range(20):
     my_circle.y = random.randrange(SCREEN_HEIGHT - my_circle.diameter)
     shape_list.append(my_circle)
 
+for i in range(100):
+    my_wrapper = Wrapper()
+    bg = random.randrange(256)
+    my_wrapper.color = (255, bg, bg)
+    my_wrapper.diameter = random.randrange(10, 100)  # dot notation outside of class
+    my_wrapper.x = random.randrange(SCREEN_WIDTH - my_wrapper.diameter)
+    my_wrapper.y = random.randrange(SCREEN_HEIGHT - my_wrapper.diameter)
+    shape_list.append(my_wrapper)
+
 #print(shape_list)
 
 
@@ -90,6 +110,14 @@ while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            my_bubble = Bubble()
+            my_bubble.diameter = random.randrange(10, 100)
+            my_bubble.color = (random.randrange(256), 200, 200)
+            my_bubble.x, my_bubble.y = event.pos
+            my_bubble.x -= my_bubble.diameter / 2
+            my_bubble.y -= my_bubble.diameter / 2
+            shape_list.append(my_bubble)
 
     # --- Game logic should go here
     for shape in shape_list:
