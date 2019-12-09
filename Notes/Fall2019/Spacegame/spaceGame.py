@@ -42,13 +42,60 @@ class Player(pygame.sprite.Sprite):
         super().__init__()
         self.image = pygame.image.load("spaceship.png")
         self.rect = self.image.get_rect()
+        self.rect.bottom = SCREEN_HEIGHT
+
+    def update(self):
+        pos = pygame.mouse.get_pos()  # (x, y) tuple
+        self.rect.x = pos[0]
+
+        if self.rect.right >= SCREEN_WIDTH:
+            self.rect.right = SCREEN_WIDTH
+
+class Bullet(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+        self.image = pygame.Surface([5, 10])
+        self.image.fill(WHITE)
+        self.rect = self.image.get_rect()
+
+    def update(self):
+        self.rect.y -= 10
+
+
+class Enemy(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+        self.image = pygame.Surface([30, 30])
+        self.image.fill(RED)
+        self.rect = self.image.get_rect()
+        self.rect.x = random.randrange(SCREEN_WIDTH - self.rect.width)
+        self.rect.y = random.randrange(300)
+        self.change_x = random.randrange(-3, 3)
+
+    def update(self):
+        self.rect.x += self.change_x
+
+        if self.rect.right >= SCREEN_WIDTH:
+            self.rect.right = SCREEN_WIDTH
+            self.change_x *= -1
+        if self.rect.left <= 0:
+            self.rect.left = 0
+            self.change_x *= -1
+
 
 # GROUPS
 all_sprites = pygame.sprite.Group()
+enemy_sprites = pygame.sprite.Group()
+bullet_sprites = pygame.sprite.Group()
 
 # INSTANCES
 player = Player()
 all_sprites.add(player)
+
+for i in range(20):
+    enemy = Enemy()
+    all_sprites.add(enemy)
+    enemy_sprites.add(enemy)
 
 # -------- Main Program Loop -----------
 while not done:
@@ -56,6 +103,13 @@ while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            new_bullet = Bullet()
+            new_bullet.rect.centerx = player.rect.centerx
+            new_bullet.rect.centery = player.rect.centery
+            all_sprites.add(new_bullet)
+            bullet_sprites.add(new_bullet)
+
 
     # --- Game logic should go here
     all_sprites.update()
