@@ -47,10 +47,39 @@ class Block(pygame.sprite.Sprite):
         self.image.fill(BLACK)
         self.rect = self.image.get_rect()  # grabs rect based on the image)
 
+class Enemy(Block):
+    def __init__(self):
+        super().__init__()
+        self.image = pygame.Surface([20, 20])
+        self.image.fill(RED)
+        self.rect = self.image.get_rect()  # grabs rect based on the image)
+        self.change_y = 1
+        self.change_x = random.randrange(-3, 4)
+
+    def update(self):
+        # x move
+        self.rect.x += self.change_x
+
+        if self.rect.right >= SCREEN_WIDTH:
+            self.rect.right = SCREEN_WIDTH
+            self.change_x *= -1
+
+        if self.rect.left <= 0:
+            self.rect.left = 0
+            self.change_x *= -1
+
+
+        # y move
+        self.rect.y += self.change_y
+
+        if self.rect.top > SCREEN_HEIGHT:
+            self.rect.bottom = 0
+            self.rect.x = random.randrange(0, SCREEN_WIDTH - self.rect.width)
 
 
 
 player = Block()
+player.rect.bottom = SCREEN_HEIGHT  # put player at bottom
 
 # make my groups
 all_sprites = pygame.sprite.Group()
@@ -58,13 +87,22 @@ all_sprites.add(player)
 
 enemy_sprites = pygame.sprite.Group()
 
-for i in range(50):
-    enemy = Block()
+for i in range(20):
+    enemy = Enemy()
     enemy.rect.x = random.randrange(0, SCREEN_WIDTH - enemy.rect.width)
-    enemy.rect.y = random.randrange(0, SCREEN_HEIGHT - enemy.rect.height)
+    enemy.rect.y = random.randrange(-200, SCREEN_HEIGHT - 200)
     enemy.image.fill(GREEN)
     all_sprites.add(enemy)
     enemy_sprites.add(enemy)
+
+
+
+# game variables
+score = 0
+lives = 3
+frame = 0
+
+
 
 # -------- Main Program Loop -----------
 while not done:
@@ -74,9 +112,23 @@ while not done:
             done = True
 
     # --- Game logic should go here
-    player.rect.right, player.rect.bottom = pygame.mouse.get_pos()
+    frame += 1
+    enemy_sprites.update()
+    player.rect.x = pygame.mouse.get_pos()[0]
 
-    pygame.sprite.spritecollide(player, enemy_sprites, True)
+    hit_list = pygame.sprite.spritecollide(player, enemy_sprites, True)
+
+    for enemy in hit_list:
+        enemy.image.fill(RED)
+        lives -= 1
+
+    if lives < 0:
+        done = True
+
+    if frame % 600 == 0:
+        for enemy in enemy_sprites:
+            enemy.change_y += 1
+
 
     # --- Drawing code goes here
     screen.fill(WHITE)
