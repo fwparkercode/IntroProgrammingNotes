@@ -50,8 +50,9 @@ class Block(pygame.sprite.Sprite):
 class Enemy(Block):
     def __init__(self):
         super().__init__()
-        self.image = pygame.Surface([20, 20])
-        self.image.fill(RED)
+        #self.image = pygame.Surface([20, 20])
+        #self.image.fill(RED)
+        self.image = pygame.image.load("enemy_ship.png")
         self.rect = self.image.get_rect()  # grabs rect based on the image)
         self.change_y = 1
         self.change_x = random.randrange(-3, 4)
@@ -77,8 +78,21 @@ class Enemy(Block):
             self.rect.x = random.randrange(0, SCREEN_WIDTH - self.rect.width)
 
 
+class Bullet(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+        self.image = pygame.Surface([5, 10])
+        self.image.fill(BLUE)
+        self.rect = self.image.get_rect()
+
+    def update(self):
+        self.rect.y -= 10
+        if self.rect.bottom < 0:
+            self.kill()
 
 player = Block()
+player.image = pygame.image.load("ship.png")
+player.rect = player.image.get_rect()
 player.rect.bottom = SCREEN_HEIGHT  # put player at bottom
 
 # make my groups
@@ -86,12 +100,12 @@ all_sprites = pygame.sprite.Group()
 all_sprites.add(player)
 
 enemy_sprites = pygame.sprite.Group()
+bullet_sprites = pygame.sprite.Group()
 
 for i in range(20):
     enemy = Enemy()
     enemy.rect.x = random.randrange(0, SCREEN_WIDTH - enemy.rect.width)
     enemy.rect.y = random.randrange(-200, SCREEN_HEIGHT - 200)
-    enemy.image.fill(GREEN)
     all_sprites.add(enemy)
     enemy_sprites.add(enemy)
 
@@ -110,11 +124,24 @@ while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            new_bullet = Bullet()
+            new_bullet.rect.centery = player.rect.centery
+            new_bullet.rect.centerx = player.rect.centerx
+            all_sprites.add(new_bullet)
+            bullet_sprites.add(new_bullet)
 
     # --- Game logic should go here
     frame += 1
-    enemy_sprites.update()
+    all_sprites.update()
     player.rect.x = pygame.mouse.get_pos()[0]
+
+    # bullet enemy collision
+    for bullet in bullet_sprites:
+        hit_list = pygame.sprite.spritecollide(bullet, enemy_sprites, True)
+        for enemy in hit_list:
+            bullet.kill()
+
 
     hit_list = pygame.sprite.spritecollide(player, enemy_sprites, True)
 
