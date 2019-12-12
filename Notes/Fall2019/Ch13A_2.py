@@ -59,7 +59,7 @@ class Enemy(pygame.sprite.Sprite):
         self.change_x = random.randrange(-3, 4)
         self.rect.x = random.randrange(SCREEN_WIDTH - self.rect.width)
         self.rect.y = random.randrange(300)
-
+        self.change_y = random.randrange(1, 4)
 
     def update(self):
         self.rect.x += self.change_x
@@ -72,21 +72,40 @@ class Enemy(pygame.sprite.Sprite):
             self.rect.left = 0
             self.change_x *= -1
 
+        self.rect.y += self.change_y
 
+        if self.rect.top > SCREEN_HEIGHT:
+            self.rect.bottom = 0
+
+
+class Bullet(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+        self.image = pygame.Surface([5, 8])
+        self.image.fill(BLUE)
+        self.rect = self.image.get_rect()
+        self.change_y = -10
+
+    def update(self):
+        self.rect.y += self.change_y
+        if self.rect.bottom < 0:
+            self.kill()
 
 # GROUPS
 all_sprites = pygame.sprite.Group()
 enemy_sprites = pygame.sprite.Group()
+bullet_sprites = pygame.sprite.Group()
 
 # INSTANCES
 player = Player()
 all_sprites.add(player)
 
-enemy = Enemy()
-all_sprites.add(enemy)
-enemy_sprites.add(enemy)
+for i in range(20):
+    enemy = Enemy()
+    all_sprites.add(enemy)
+    enemy_sprites.add(enemy)
 
-
+pygame.mouse.set_visible(False)
 
 # -------- Main Program Loop -----------
 while not done:
@@ -94,9 +113,21 @@ while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            new_bullet = Bullet()
+            #new_bullet.rect.centery = player.rect.centery
+            #new_bullet.rect.centerx = player.rect.centerx
+            new_bullet.rect.midtop = player.rect.midtop
+            all_sprites.add(new_bullet)
+            bullet_sprites.add(new_bullet)
 
     # --- Game logic should go here
     all_sprites.update()
+
+    for bullet in bullet_sprites:
+        hit_list = pygame.sprite.spritecollide(bullet, enemy_sprites, True)
+        for hit in hit_list:
+            bullet.kill()
 
     # --- Drawing code goes here
     screen.fill(WHITE)

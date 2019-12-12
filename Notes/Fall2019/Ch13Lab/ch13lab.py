@@ -1,6 +1,6 @@
 """
-Ch 13 Lab
-Aaron Lee
+Chapter 13 Lab
+Aaron Lee 2019
 """
 import pygame
 import random
@@ -44,8 +44,6 @@ class Player(pygame.sprite.Sprite):
         """ Find a new position for the player"""
         self.rect.x += self.change_x
         self.rect.y += self.change_y
-
-
 
 class Block(pygame.sprite.Sprite):
     """
@@ -101,7 +99,7 @@ for i in range(50):
     all_sprites_list.add(block)
 
 # Create a RED player block
-player = Player(20, 20)
+player = Player(0, 0)
 all_sprites_list.add(player)
 
 # Loop until the user clicks the close button.
@@ -117,7 +115,8 @@ while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
-            # Set the speed based on the key pressed
+
+        # Set the speed based on the key pressed
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
                 player.changespeed(-3, 0)
@@ -139,9 +138,9 @@ while not done:
             elif event.key == pygame.K_DOWN:
                 player.changespeed(0, -3)
 
-
-    # game logic
+    # Game logic
     all_sprites_list.update()
+
 
     # Clear the screen
     screen.fill(WHITE)

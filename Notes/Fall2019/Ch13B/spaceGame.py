@@ -60,6 +60,8 @@ class Bullet(pygame.sprite.Sprite):
 
     def update(self):
         self.rect.y -= 10
+        if self.rect.bottom < 0:
+            self.kill()
 
 
 class Enemy(pygame.sprite.Sprite):
@@ -113,6 +115,12 @@ while not done:
 
     # --- Game logic should go here
     all_sprites.update()
+
+    for bullet in bullet_sprites:
+        hit_list = pygame.sprite.spritecollide(bullet, enemy_sprites, True)
+        for enemy in hit_list:
+            bullet.kill()
+
 
     # --- Draw to screen
     screen.fill(BLACK)
