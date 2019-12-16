@@ -19,7 +19,7 @@ pygame.display.set_caption('Scrolling background')
  
 clock = pygame.time.Clock()
  
-background_image = pygame.image.load("scroll.png")
+background_image = pygame.image.load("background_image.png")
 bg_x = 0
  
 done = False

@@ -23,6 +23,7 @@ PINK = (255, 200, 200)
 MAROON = (100, 0, 0)
 ORANGE = (255, 150, 0)
 PURPLE = (150, 50, 200)
+GRAY = (240, 240, 240)
 
 SCREEN_WIDTH = 900
 SCREEN_HEIGHT = 500
@@ -38,7 +39,7 @@ clock = pygame.time.Clock()  # Used to manage how fast the screen updates
 class Apple(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load("apple.png")  # THIS IMAGE IS NOT GOOD
+        self.image = pygame.image.load("apple.png")
         self.rect = self.image.get_rect()
 
 
@@ -60,7 +61,7 @@ for alpha in range(0, 255, 10):
     apple.image = apple.image.convert()  # change to usable pygame format
     apple.image.set_colorkey(BLACK)  # remove background from converted image
     apple.image.set_alpha(alpha)  # set alpha (0 transparent >>> 255 opaque)
-    apple.rect.x = alpha * 2  # draw across screen
+    apple.rect.x = alpha * 3  # draw across screen
     all_sprites.add(apple)
 
 
@@ -71,7 +72,7 @@ for angle in range(0, 360, 10):
     apple.image = apple.image.convert()  # change to usable pygame format
     apple.image.set_colorkey(BLACK)  # remove background from converted image
     apple.image = pygame.transform.rotate(apple.image, angle)
-    apple.rect.x = angle * 2  # draw bunch across screen
+    apple.rect.x = angle * 3 # draw bunch across screen
     apple.rect.y = apple.rect.height * 2  # move it down a row
     all_sprites.add(apple)
 
@@ -80,7 +81,7 @@ for angle in range(0, 360, 10):
 # for this I use the function rot_image() above
 for angle in range(0, 360, 10):
     apple = Apple()
-    apple.rect.x = angle * 2  # draw bunch across screen
+    apple.rect.x = angle * 3  # draw bunch across screen
     apple.rect.y = apple.rect.height * 5  # move it down a row
     apple.image = apple.image.convert()  # change to usable pygame format
     apple.image.set_colorkey(BLACK)  # remove background from converted image
@@ -89,13 +90,14 @@ for angle in range(0, 360, 10):
 
 
 # This code increases the size as we go across
+# notice the pixelization when it gets big.  Shrink it to avoid this.
 for width in range(10, 100, 10):
     apple = Apple()
     apple.image = apple.image.convert()  # change to usable pygame format
     apple.image.set_colorkey(BLACK)  # remove background from converted image
     apple.image = pygame.transform.scale(apple.image, [width, width])
     apple.rect = apple.image.get_rect()
-    apple.rect.x = width * 8  # draw bunch across screen
+    apple.rect.x = width * 10  # draw bunch across screen
     apple.rect.y = 400  # move it down a row
     all_sprites.add(apple)
 
@@ -111,7 +113,7 @@ while not done:
     # --- Game logic should go here
 
     # --- Draw to screen
-    screen.fill(WHITE)
+    screen.fill(GRAY)
 
     all_sprites.draw(screen)
 

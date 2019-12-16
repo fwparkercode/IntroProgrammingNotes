@@ -96,6 +96,7 @@ all_sprites.add(player)
 
 for i in range(20):
     enemy = Enemy()
+    enemy.image = pygame.image.load("spaceship.png")
     all_sprites.add(enemy)
     enemy_sprites.add(enemy)
 
