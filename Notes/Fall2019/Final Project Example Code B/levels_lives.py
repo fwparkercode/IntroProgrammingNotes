@@ -80,6 +80,12 @@ class Player(pygame.sprite.Sprite):
         self.rect.y += self.change_y
 
 
+# FUNCTIONS
+
+
+
+
+
 # Call this function so the Pygame library can initialize itself
 pygame.init()
 
@@ -127,6 +133,44 @@ done = False
 score = 0
 lives = 5
 
+
+def intro_screen():
+    done = False
+    while not done:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                done = True
+            if event.type == pygame.KEYDOWN:
+                done = True
+
+        screen.fill(BLACK)
+
+        my_text = my_font.render("Press any key", True, WHITE)
+
+        screen.blit(my_text, [200, 200])
+        pygame.display.flip()
+        clock.tick(60)
+
+def game_over():
+    done = False
+    while not done:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                done = True
+            if event.type == pygame.KEYDOWN:
+                done = True
+
+        screen.fill(BLACK)
+
+        my_text = my_font.render("GAME OVER", True, WHITE)
+
+        screen.blit(my_text, [200, 200])
+        pygame.display.flip()
+        clock.tick(60)
+
+intro_screen()
+
+# GAME STARTS HERE
 while not done:
 
     for event in pygame.event.get():
@@ -174,6 +218,7 @@ while not done:
 
     if lives < 0:
         done = True  # maybe replace with a game over screen.
+        game_over()
 
     # -- Draw everything
     # Clear screen
