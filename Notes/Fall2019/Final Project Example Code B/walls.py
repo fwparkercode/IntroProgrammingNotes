@@ -34,6 +34,8 @@ class Player(pygame.sprite.Sprite):
         self.change_x = 0
         self.change_y = 0
 
+        self.wall_sprites = []
+
     def changespeed(self, x, y):
         """ Change the speed of the player"""
         self.change_x += x
@@ -41,9 +43,9 @@ class Player(pygame.sprite.Sprite):
 
     def update(self):
         """ Find a new position for the player"""
+        # DO THE COLLISIONS ONE DIMENSION AT A TIME
         self.rect.x += self.change_x
-
-        hit_list = pygame.sprite.spritecollide(self, self.walls, False)
+        hit_list = pygame.sprite.spritecollide(self, self.wall_sprites, False)
         for wall in hit_list:
             if self.change_x > 0:
                 self.rect.right = wall.rect.left
@@ -51,8 +53,7 @@ class Player(pygame.sprite.Sprite):
                 self.rect.left = wall.rect.right
 
         self.rect.y += self.change_y
-
-        hit_list = pygame.sprite.spritecollide(self, self.walls, False)
+        hit_list = pygame.sprite.spritecollide(self, self.wall_sprites, False)
         for wall in hit_list:
             if self.change_y > 0:
                 self.rect.bottom = wall.rect.top
@@ -61,11 +62,12 @@ class Player(pygame.sprite.Sprite):
 
 
 class Wall(pygame.sprite.Sprite):
-    def __init__(self, width, height):
+    def __init__(self, x, y, width, height):
         super().__init__()
         self.image = pygame.Surface([width, height])
-        self.image.fill((0, 0, 255))
         self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
 
 
 
@@ -86,14 +88,12 @@ all_sprites_list = pygame.sprite.Group()
 wall_sprites = pygame.sprite.Group()
 all_sprites_list.add(player)
 
-player.walls = wall_sprites
 
-wall = Wall(20, 200)
-wall.rect.x = 100
-wall.rect.y = 100
+wall1 = Wall(100, 100, 200, 20)
+all_sprites_list.add(wall1)
+wall_sprites.add(wall1)
 
-all_sprites_list.add(wall)
-wall_sprites.add(wall)
+player.wall_sprites = wall_sprites # add the wall sprite group as an attribute of player
 
 clock = pygame.time.Clock()
 done = False
@@ -131,9 +131,6 @@ while not done:
     # This calls update on all the sprites
     all_sprites_list.update()
 
-
-
-
     # -- Draw everything
     # Clear screen
     screen.fill(WHITE)
@@ -148,8 +145,3 @@ while not done:
     clock.tick(60)
 
 pygame.quit()
-
-
-
-
-]
