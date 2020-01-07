@@ -35,7 +35,7 @@ class Player(pygame.sprite.Sprite):
         self.change_y = 0
         self.gravity = 0.5
 
-        self.wall_sprites = []
+        self.walls = []
 
     def changespeed(self, x, y):
         """ Change the speed of the player"""
@@ -44,9 +44,8 @@ class Player(pygame.sprite.Sprite):
 
     def update(self):
         """ Find a new position for the player"""
-        # DO THE COLLISIONS ONE DIMENSION AT A TIME
         self.rect.x += self.change_x
-        hit_list = pygame.sprite.spritecollide(self, self.wall_sprites, False)
+        hit_list = pygame.sprite.spritecollide(self, self.walls, False)
         for wall in hit_list:
             if self.change_x > 0:
                 self.rect.right = wall.rect.left
@@ -55,11 +54,11 @@ class Player(pygame.sprite.Sprite):
 
         self.change_y += self.gravity
         self.rect.y += self.change_y
-        hit_list = pygame.sprite.spritecollide(self, self.wall_sprites, False)
+        hit_list = pygame.sprite.spritecollide(self, self.walls, False)
         for wall in hit_list:
             if self.change_y > 0:
-                self.change_y = 0
                 self.rect.bottom = wall.rect.top
+                self.change_y = 0
             else:
                 self.rect.top = wall.rect.bottom
 
@@ -68,11 +67,10 @@ class Wall(pygame.sprite.Sprite):
     def __init__(self, x, y, width, height):
         super().__init__()
         self.image = pygame.Surface([width, height])
+        self.image.fill(BLACK)
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
-
-
 
 
 
@@ -86,17 +84,22 @@ screen = pygame.display.set_mode([800, 600])
 pygame.display.set_caption('Test')
 
 # Create the player object
-player = Player(120, 50)
+player = Player(150, 50)
+
+# Groups
 all_sprites_list = pygame.sprite.Group()
 wall_sprites = pygame.sprite.Group()
+player.walls = wall_sprites
+
+wall = Wall(100, 100, 200, 20)
+wall_sprites.add(wall)
+all_sprites_list.add(wall)
+
+wall = Wall(350, 150, 200, 20)
+wall_sprites.add(wall)
+all_sprites_list.add(wall)
+
 all_sprites_list.add(player)
-
-
-wall1 = Wall(100, 100, 200, 20)
-all_sprites_list.add(wall1)
-wall_sprites.add(wall1)
-
-player.wall_sprites = wall_sprites # add the wall sprite group as an attribute of player
 
 clock = pygame.time.Clock()
 done = False
@@ -114,6 +117,7 @@ while not done:
             elif event.key == pygame.K_RIGHT:
                 player.changespeed(3, 0)
             elif event.key == pygame.K_UP:
+                # jump
                 player.change_y = -10
 
 
