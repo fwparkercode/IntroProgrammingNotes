@@ -33,6 +33,7 @@ class Player(pygame.sprite.Sprite):
         # Set speed vector
         self.change_x = 0
         self.change_y = 0
+        self.gravity = 0.5
 
     def changespeed(self, x, y):
         """ Change the speed of the player"""
@@ -50,11 +51,12 @@ class Player(pygame.sprite.Sprite):
             else:
                 self.rect.left = wall.rect.right
 
+        self.change_y += self.gravity
         self.rect.y += self.change_y
-
         hit_list = pygame.sprite.spritecollide(self, self.walls, False)
         for wall in hit_list:
             if self.change_y > 0:
+                self.change_y = 0
                 self.rect.bottom = wall.rect.top
             else:
                 self.rect.top = wall.rect.bottom
@@ -95,6 +97,15 @@ wall.rect.y = 100
 all_sprites_list.add(wall)
 wall_sprites.add(wall)
 
+
+
+wall = Wall(100, 20)
+wall.rect.x = 0
+wall.rect.y = 200
+
+all_sprites_list.add(wall)
+wall_sprites.add(wall)
+
 clock = pygame.time.Clock()
 done = False
 
@@ -111,9 +122,7 @@ while not done:
             elif event.key == pygame.K_RIGHT:
                 player.changespeed(3, 0)
             elif event.key == pygame.K_UP:
-                player.changespeed(0, -3)
-            elif event.key == pygame.K_DOWN:
-                player.changespeed(0, 3)
+                player.change_y = -10
 
         # Reset speed when key goes up
         elif event.type == pygame.KEYUP:
@@ -121,10 +130,7 @@ while not done:
                 player.changespeed(3, 0)
             elif event.key == pygame.K_RIGHT:
                 player.changespeed(-3, 0)
-            elif event.key == pygame.K_UP:
-                player.changespeed(0, 3)
-            elif event.key == pygame.K_DOWN:
-                player.changespeed(0, -3)
+
 
     # --- Game logic
 
@@ -149,7 +155,3 @@ while not done:
 
 pygame.quit()
 
-
-
-
-]
