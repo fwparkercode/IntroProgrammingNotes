@@ -84,3 +84,89 @@ print(16 ** 0.5)
 print(9 % 5)
 print(7 % 3)
 print(524789523497803524897 % 3)
+
+# Operator spacing (space on either side of EVERY operator)
+x=5+3-2/(6**0.5)//4  # please don't do this
+x         =5+3-2          /(  6**     0.5)   //4  # please don't do this
+x = 5 + 3 - 2 / (6 ** 0.5) // 4  # please do this
+
+# Order of operations - PEMDAS rules apply
+
+
+# Importing libraries (adds functionality to our code)
+import math
+
+print(math.pi)
+print(math.cos(math.pi))  # trig is in radians
+print(math.e)
+
+
+#  Custom calculator
+
+# simple calculator without inputs
+# area of circle
+radius = 5
+area_circle = math.pi * radius ** 2
+print(area_circle)
+
+# Input function
+# input()  # this just pauses the program waiting for input and RETURN from user
+# input("Press any key to continue: ")  # the input function can use a prompt (string)
+# my_input = input("Type something and hit Return")  # returns a string that you can assign
+# print("You typed", my_input)
+# print("End of program")
+
+# Data Types
+my_string = "Hello"  # strings are just text
+my_int = -3  # integers are counting numbers (negative, zero, positive)
+my_float = 3.5  # floats are decimal numbers
+
+# Casting (switching between data types)
+x = int("5")  # the string "5" is converted to integer 5
+print(x ** 2)
+
+x = float("5.5")  # string to float conversion
+print(x)
+
+x = int(5.5)
+print(x)
+
+
+# Improved Calculator
+print("Area of Circle Calculator")
+radius = float(input("Enter the radius of the circle"))
+#radius = float(radius)
+area_circle = math.pi * radius ** 2
+print("Area:", area_circle)
+
+
+# Make your own MPG calculator (mpg = miles / gallons)
+print("\nMPG Calculator")
+miles = float(input("Enter the miles"))
+gallons = float(input("Enter the gallons"))
+
+mpg = miles / gallons
+
+print("MPG:", mpg, "miles/gallon")
+
+
+
+# Concatenation (smooshing together the strings)
+percentile = 89.8
+print(str(percentile) + "%")
+
+first = "Francis"
+last = "Parker"
+print(first + last)
+
+
+
+
+
+
+
+
+
+
+
+
