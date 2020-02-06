@@ -93,6 +93,113 @@ if a < b < c:
 
 
 # More with Boolean variables
+x = True
+y = a > b
+print(y)
+
+z = d == e
+print(z)
+
+if 1:
+    print("1 is True")
+
+if 0:
+    print("0 is False")  # does not print
+
+
+# Everything is True except False and 0
+if "Hello World":
+    print("Strings are ALL True")
+
+
+# common error
+if a > b or c:
+    print("This is checking to see if c is True")
+
+
+# Else and Else If (elif)
+# Only one If elif can execute.
+# If no If elif are True, the else will always run
+
+temperature = 10
+
+if temperature > 90:
+    print("It is hot outside")
+elif temperature > 70:
+    print("It is warm outside")
+elif temperature > 40:
+    print("It is cool outside")
+elif temperature > 20:
+    print("It is cold outside")
+else:
+    print("You are in Chicago")
+
+
+# Text comparisons
+name = input("Enter your name: ")
+if name == "Aaron":
+    print("That's my name too.")
+
+# Text is alphabetical (according to ascii table)
+if "A" > "B":
+    print("A is greater than B")  # does not print
+
+if "B" > "a":
+    print("B is greater than a")  # does not print
+
+if "apple" > "ant":
+    print("If the first character is a tie, it goes to next")
+
+# Case insensitive comparisons
+# .upper() and .lower()
+name = "Francis"
+print(name.upper())
+print(name.lower())
+print(name)
+
+name = input("Enter your name: ")
+if name.upper() == "AARON":
+    print("That's my name too.")
+
+
+# Nesting If statements
+if b > a:
+    print("b > a")
+    if d > a:
+        print("d > a")
+
+
+# Multiple choice question
+print("What is the capitol of Illinois?")
+
+print("\tA) Chicago")
+print("\tB) Springfield")
+print("\tC) Peoria")
+print("\tD) Rockford")
+
+answer = input("Your answer: ")
+
+if answer.upper() == "B" or answer.upper() == "SPRINGFIELD":
+    print("Correct")
+elif answer.upper() == "A":
+    print("Do you even live here?")
+else:
+    print("Incorrect")
+
+
+# Fill in blank / short answer
+answer = input("Where do you go to school?")
+
+if answer.lower() == "parker" or answer.upper() == "FRANCIS PARKER" or answer.upper() == "FRANCIS W PARKER" or answer.upper() == "FRANCIS W. PARKER" or answer.upper() == "FWP":
+    print("Yay! I go there too.")
+elif answer.upper() == "LATIN":
+    print("Good for you.")
+else:
+    print("I hear", answer, "is a fine institution.")
+
+
+
+
 
 
 
