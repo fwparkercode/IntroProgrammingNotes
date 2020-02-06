@@ -170,5 +170,3 @@ print("Francis" + "W" + "Parker")
 percentage = round(67 / 489 * 100, 2)
 print(str(percentage) + "%")
 
-
-

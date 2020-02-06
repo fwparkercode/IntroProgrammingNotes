@@ -83,11 +83,16 @@ y = False
 if x and y:
     print("both are True")
 
-# Compond IF statement
+# Compound IF statement
 if (a < b and b < c) or (d == e and e > a):
     print("You can check lots of things at once")
 
 # Special python only math trick
 if a < b < c:
     print("Only in Python")
+
+
+# More with Boolean variables
+
+
 
