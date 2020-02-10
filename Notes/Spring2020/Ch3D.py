@@ -129,6 +129,49 @@ print("Francis".upper())
 print("Parker".lower())
 
 
+# Monday, 2/10
+
+score = 0  # track the number of correct answers
+
+
+answer = input("What school do you go to?")
+
+if answer.upper() == "PARKER" or answer.lower() == "fwp" or answer.upper() == "FRANCIS PARKER" or answer.upper() == "FRANCIS W. PARKER":
+    print("Yay! I go there too")
+    score += 1  # increment by 1
+elif answer.upper() == "LATIN":
+    print("Oh, good for you.")
+else:
+    print("I hear that", answer, "is a fine institution.")
+
+
+# Multiple Choice
+print("What is the capital of Illinois?")
+
+print("A. Springfield")
+print("B. Chicago")
+print("C. Peoria")
+print("D. Rockford")
+
+answer = input("Enter your choice: ")
+
+if answer.lower() == "a" or answer.upper() == "SPRINGFIELD":
+    print("Correct!")
+    score += 1
+elif answer.upper() == "B" or answer.upper() == "CHICAGO":
+    print("Do you even live here?")
+else:
+    print("Incorrect.  The answer was Springfield.")
+
+print("You got", score, "out of", 2, "correct.")
+print("You got",score / 2 * 100 ,"percent.")
+
+percent = score / 2 * 100
+print(str(percent) + "%")  # concatenation of two strings
+
+# Chapter 3 assignments
+
+
 
 
 
