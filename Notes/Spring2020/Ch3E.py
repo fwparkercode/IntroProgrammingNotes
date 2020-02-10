@@ -157,6 +157,7 @@ print(name.upper())
 print(name.lower())
 print(name)
 
+
 name = input("Enter your name: ")
 if name.upper() == "AARON":
     print("That's my name too.")
@@ -169,7 +170,14 @@ if b > a:
         print("d > a")
 
 
+
+
+
 # Multiple choice question
+score = 0
+total_questions = 2
+
+print("Question #1")
 print("What is the capitol of Illinois?")
 
 print("\tA) Chicago")
@@ -181,21 +189,32 @@ answer = input("Your answer: ")
 
 if answer.upper() == "B" or answer.upper() == "SPRINGFIELD":
     print("Correct")
+    score += 1  # increment the score
 elif answer.upper() == "A":
     print("Do you even live here?")
 else:
     print("Incorrect")
 
+print("\n")
 
 # Fill in blank / short answer
 answer = input("Where do you go to school?")
 
 if answer.lower() == "parker" or answer.upper() == "FRANCIS PARKER" or answer.upper() == "FRANCIS W PARKER" or answer.upper() == "FRANCIS W. PARKER" or answer.upper() == "FWP":
     print("Yay! I go there too.")
+    score += 1
 elif answer.upper() == "LATIN":
     print("Good for you.")
+    score -= 1000000
 else:
     print("I hear", answer, "is a fine institution.")
+
+
+print("You got", score, "out of", total_questions, "correct.")
+
+percent = score / total_questions * 100
+print("You scored", str(percent) + "%.")
+
 
 
 
