@@ -131,9 +131,13 @@ print("Parker".lower())
 
 # Monday, 2/10
 
+
+
+
+# Short Answer or Fill in Blank
 score = 0  # track the number of correct answers
 
-
+print("Question 1")
 answer = input("What school do you go to?")
 
 if answer.upper() == "PARKER" or answer.lower() == "fwp" or answer.upper() == "FRANCIS PARKER" or answer.upper() == "FRANCIS W. PARKER":
@@ -145,13 +149,26 @@ else:
     print("I hear that", answer, "is a fine institution.")
 
 
+
+# Math Question
+print("\n\nQuestion 2")
+answer = float(input("What is 25 squared?"))
+
+if answer == 25 ** 2:
+    print("Correct!")
+    score += 1
+else:
+    print("Sorry, the answer was", 25 ** 2)
+
+
 # Multiple Choice
+print("\n\nQuestion 3")
 print("What is the capital of Illinois?")
 
-print("A. Springfield")
-print("B. Chicago")
-print("C. Peoria")
-print("D. Rockford")
+print("\tA. Springfield")
+print("\tB. Chicago")
+print("\tC. Peoria")
+print("\tD. Rockford")
 
 answer = input("Enter your choice: ")
 
@@ -163,13 +180,22 @@ elif answer.upper() == "B" or answer.upper() == "CHICAGO":
 else:
     print("Incorrect.  The answer was Springfield.")
 
-print("You got", score, "out of", 2, "correct.")
-print("You got",score / 2 * 100 ,"percent.")
+print("\n\nYou got", score, "out of", 3, "correct.")
+print("You got",score / 3 * 100 ,"percent.")
 
-percent = score / 2 * 100
+percent = score / 3 * 100
 print(str(percent) + "%")  # concatenation of two strings
 
-# Chapter 3 assignments
+
+
+
+# Additional help
+print()  # prints blank line
+print("\n")  # two blank lines
+
+
+
+
 
 
 

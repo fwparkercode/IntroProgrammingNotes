@@ -173,9 +173,10 @@ if b > a:
 
 
 
+
 # Multiple choice question
 score = 0
-total_questions = 2
+total_questions = 3
 
 print("Question #1")
 print("What is the capitol of Illinois?")
@@ -209,11 +210,24 @@ elif answer.upper() == "LATIN":
 else:
     print("I hear", answer, "is a fine institution.")
 
+#  Math questions
+answer = float(input("What is 25 squared?"))
+if answer == 25 ** 2:
+    print("Correct")
+    score += 1
+else:
+    print("Incorrect, the correct answer was", 25 ** 2)
+
 
 print("You got", score, "out of", total_questions, "correct.")
 
 percent = score / total_questions * 100
 print("You scored", str(percent) + "%.")
+
+# Extra stuff
+x = 2 / 3
+print(x)
+print(round(x, 2) * 100)
 
 
 
