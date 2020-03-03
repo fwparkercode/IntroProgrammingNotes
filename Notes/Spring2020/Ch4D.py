@@ -158,9 +158,44 @@ while i > 10:
 
 
 # Infinite Loops (BAD)
-i = 1
-while i < 11:
-    print(i)
+# i = 1
+# while i < 11:
+#     print(i)
+
+
+# driving value in wrong direction
+# i = 10
+# while i > 0:
+#     i *= 2
+#     print(i)
+
+
+# Looping until you want to quit
+
+# print all cubed values less than 1000000
+
+n = 1
+while n ** 3 < 1000000:
+    print(n, "cubed is", n ** 3)
+    n += 1
+
+
+# game loop
+done = False
+print("Welcome to Dragon Quest 2:")
+while not done:
+    print('There is a dragon blocking the exit.')
+    answer = input("Do you want to attack the dragon? ")
+    if answer.upper() == "YES" or answer.upper() == "Y":
+        print("The dragon eats you.")
+        done = True
+
+print("Thank you for playing.")
+
+
+
+
+
 
 
 
