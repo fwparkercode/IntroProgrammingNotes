@@ -1,57 +1,48 @@
 """
-pygame base template
+Pygame base template
 by Aaron Lee 2020
 """
 
 import pygame
 
-# Define some colors
+# Define global varibles
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
 RED = (255, 0, 0)
 BLUE = (0, 0, 255)
-CYAN = (0, 255, 255)
 MAGENTA = (255, 0, 255)
 YELLOW = (255, 255, 0)
-GRAY = (120, 120, 120)
-ORANGE = (255, 150, 0)
-PINK = (255, 200, 200)
-MAROON = (100, 0, 0)
-MY_GREEN = (72, 110, 19)
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 600
+CYAN = (0, 255, 255)
+WIDTH = 800
+HEIGHT = 600
 done = False
 
-# Starts up pygame (don't do any pygame stuff before this)
 pygame.init()
 
 # Set the width and height of the screen [width, height]
-size = (SCREEN_WIDTH, SCREEN_HEIGHT)
+size = (WIDTH, HEIGHT)
 screen = pygame.display.set_mode(size)
 
-pygame.display.set_caption("My Template")
+pygame.display.set_caption("My Game")
 
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
 
 # -------- Main Program Loop -----------
 while not done:
-    # --- Main event loop
+    # --- Main event loop (user input)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
 
     # --- Game logic should go here
 
-    screen.fill(MY_GREEN)
     # --- Drawing code should go here
+    screen.fill(WHITE) # paint the blank canvas
 
-    # --- Go ahead and update the screen with what we've drawn.
-    pygame.display.flip()
+    pygame.display.flip() # show the updated drawing
 
-    # --- Limit to 60 frames per second
-    clock.tick(60)
+    clock.tick(60)  # 60 frames per second
 
-# Close the window and quit.
-pygame.quit()
+pygame.quit()  # Close the window and quit.
