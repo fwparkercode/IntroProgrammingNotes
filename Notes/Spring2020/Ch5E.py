@@ -22,6 +22,8 @@ MY_GREEN = (72, 110, 19)
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 done = False
+score = 0
+x_pos = 0
 
 # Starts up pygame (don't do any pygame stuff before this)
 pygame.init()
@@ -47,6 +49,8 @@ while not done:
             done = True
 
     # --- Game logic should go here
+    score += 1
+    x_pos += 1
 
     screen.fill(WHITE)
     # --- Drawing code should go here
@@ -76,7 +80,17 @@ while not done:
     pygame.draw.polygon(screen, RED, [[100, 100], [200, 100], [150, 200]])
 
     # circle(surface, color, [centerx, centery], radius, optional_width)
-    pygame.draw.circle(screen, YELLOW, [SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2], 50)
+    pygame.draw.circle(screen, YELLOW, [x_pos, SCREEN_HEIGHT // 2], 50)
+
+    # Font step 2 (render)
+    # my_font.render("Text to print", Anti-alias, color)
+    # text to print can only be a single string.  Use concatenation if you have more.
+    my_text = my_font.render("Score: " + str(score), True, BLACK)
+
+    # Font step 3 (blit)
+    # surface.blit(text_object, [x, y])
+    screen.blit(my_text, [50, 50])
+
 
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
