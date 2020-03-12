@@ -24,6 +24,10 @@ SCREEN_HEIGHT = 600
 done = False
 score = 0
 x_pos = 0
+x_off = -100
+y_off = 300
+
+
 
 # Starts up pygame (don't do any pygame stuff before this)
 pygame.init()
@@ -77,7 +81,7 @@ while not done:
     pygame.draw.ellipse(screen, YELLOW, [400, 400, 200, 100])
 
     # polygon(surface, color, [[x0, y0], [x1, y1], [x2, y2]...], optional_width)
-    pygame.draw.polygon(screen, RED, [[100, 100], [200, 100], [150, 200]])
+    pygame.draw.polygon(screen, BLUE, [[100, 100], [200, 100], [150, 200]])
 
     # circle(surface, color, [centerx, centery], radius, optional_width)
     pygame.draw.circle(screen, YELLOW, [x_pos, SCREEN_HEIGHT // 2], 50)
@@ -91,6 +95,25 @@ while not done:
     # surface.blit(text_object, [x, y])
     screen.blit(my_text, [50, 50])
 
+
+    # using an offset
+    pygame.draw.polygon(screen, BLUE, [[100 + x_off, 100], [200 + x_off, 100], [150 + x_off, 200]])
+
+    for i in range(SCREEN_HEIGHT // 2, SCREEN_HEIGHT, 100):
+        pygame.draw.line(screen, YELLOW, [SCREEN_WIDTH // 2, i], [SCREEN_WIDTH // 2, i + 50], 10)
+
+
+    for x in range(-200, SCREEN_WIDTH + 200, 50):
+        pygame.draw.polygon(screen, GREEN, [[x, y_off + 100], [x + 100, y_off + 100], [x + 50, y_off]])
+
+    width = 0
+    for y in range(100, 300, 30):
+        width += 1
+        for x in range(200 - width * 10, 200 + width * 10, 10):
+            pygame.draw.circle(screen, RED, [x, y], 5)
+
+    for x in range(0, 200, 50):
+        pygame.draw.ellipse(screen, GRAY, [x, 0, 100, 100])
 
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()

@@ -93,6 +93,10 @@ while not done:
     #     pygame.draw.circle(screen, BLACK, [80 + x + x_offset, 80], 5)
     #     pygame.draw.circle(screen, BLACK, [120 + x + x_offset, 80], 5)
 
+    # star
+    star_points = [[50, 0], [60, 20], [100,20], [60,50], [80, 100], [60,80], [20, 100]]
+    pygame.draw.polygon(screen, BLACK, star_points)
+
 
     pygame.display.flip()  # show the updated drawing
 

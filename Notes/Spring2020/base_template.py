@@ -39,9 +39,9 @@ while not done:
     # --- Game logic should go here
 
     # --- Drawing code should go here
-    screen.fill(WHITE) # paint the blank canvas
+    screen.fill(WHITE)  # paint the blank canvas
 
-    pygame.display.flip() # show the updated drawing
+    pygame.display.flip()  # show the updated drawing
 
     clock.tick(60)  # 60 frames per second
 
