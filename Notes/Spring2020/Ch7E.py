@@ -127,3 +127,70 @@ print(my_rolls)
 
 
 # find out how many sevens you rolled by going back through the list
+sevens = 0
+
+for roll in my_rolls:
+    total = roll[0] + roll[1]
+    if total == 7:
+        sevens += 1
+
+print(sevens / len(my_rolls) * 100, "percent sevens")
+
+# String slicing
+my_string = "Strings are a lot like lists!"
+
+# indexing strings
+print(my_string[0])  # works like a list
+print(my_string[7])  # spaces are characters too
+print(my_string[-1])  # print the exclamations mark using reverse index
+
+# ranges of indices
+print(my_string[:4])  # beginning up to but not including index 4
+print(my_string[15:])  # 15 to the end
+print(my_string[-3:])  # last three characters
+print(my_string[6:13])  # print "s are a"
+
+# string math
+a = "Francis"
+b = "Wayland"
+c = "Parker"
+
+print(a + b + c)
+print(a * 3)
+
+for character in a:
+    print(character)
+
+
+# challenge problem
+months = "JanFebMarAprMayJunJulAugSepOctNovDec"
+# n = int(input("Enter a month number: "))
+n = 1
+
+# write code that will print the correct three letter month abbreviation for the number
+# if I enter 3, it prints "Mar"
+# start by just printing first letter of month
+# USE STRING SLICING
+
+print(months[(n - 1) * 3:(n - 1) * 3 + 3])
+
+
+# Caesar cipher
+message = "Leave room"
+
+
+
+
+encoded_message = ""
+
+for char in message:
+    new_char = ord(char) + 2  # ordinal function changes character to number
+    new_char = chr(new_char)  # chr changes ordinal into character
+    encoded_message += new_char
+
+print(encoded_message)
+
+# decode
+decoded_message = ""
+for char in 'Ngcxg"tqqo':
+    new_char = ord(char) - 2
