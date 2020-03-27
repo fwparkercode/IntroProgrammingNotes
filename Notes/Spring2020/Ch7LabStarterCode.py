@@ -38,3 +38,19 @@ while not done:
     choice = int(input("Flip a switch 0 to 9: "))
 
     print()
+
+    if 0 < choice < 9:
+        if lights[choice] == "X":
+            lights[choice] = "O"
+        else:
+            lights[choice] = "X"
+
+        if lights[choice - 1] == "X":
+            lights[choice - 1] = "O"
+        else:
+            lights[choice - 1] = "X"
+
+        if lights[choice + 1] == "X":
+            lights[choice + 1] = "O"
+        else:
+            lights[choice + 1] = "X"
