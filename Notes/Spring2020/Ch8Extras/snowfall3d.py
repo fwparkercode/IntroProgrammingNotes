@@ -60,7 +60,7 @@ while not done:
     screen.fill(BLACK)  # paint the blank canvas
 
     for flake in flake_list:
-        pygame.draw.ellipse(screen, WHITE, [flake[0], flake[1], 5, 5])
+        pygame.draw.ellipse(screen, WHITE, [flake[0], flake[1], flake[2] + 4, flake[2] + 4])
 
     pygame.display.flip()  # show the updated drawing
 

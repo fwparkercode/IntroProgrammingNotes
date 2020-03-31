@@ -29,13 +29,13 @@ pygame.display.set_caption("My Game")
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
 
-rect_x = 200
-rect_y = 0
+rect_x = 0
 change_x = 4
-change_y = 0
-accel_y = 0.1
 
-damp = 0.9
+rect_y = 0
+change_y = 0
+gravity = 0.1
+elasticity = 0.85
 
 # -------- Main Program Loop -----------
 while not done:
@@ -45,19 +45,22 @@ while not done:
             done = True
 
     # --- Game logic should go here
-    change_y += accel_y
-    rect_y += change_y
     rect_x += change_x
+
+    if rect_x >= WIDTH - 50:
+        rect_x = WIDTH - 50
+        change_x *= -1
+    if rect_x <= 0:
+        rect_x = 0
+        change_x *= -1
+
+    change_y += gravity
+    rect_y += change_y
 
     if rect_y > HEIGHT - 50:
         rect_y = HEIGHT - 50
-        change_y *= -damp
-
-    if rect_x > WIDTH - 50:
-        change_x *= -damp
-    if rect_x < 0:
-        change_x *= -damp
-
+        change_y *= -elasticity
+        change_x *= elasticity
 
     # --- Drawing code should go here
     screen.fill(WHITE)  # paint the blank canvas
