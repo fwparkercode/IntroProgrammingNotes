@@ -39,18 +39,31 @@ while not done:
 
     print()
 
-    if 0 < choice < 9:
-        if lights[choice] == "X":
-            lights[choice] = "O"
-        else:
-            lights[choice] = "X"
+    if lights[choice] == "X":
+        lights[choice] = "O"
+    else:
+        lights[choice] = "X"
 
+    if choice > 0:
         if lights[choice - 1] == "X":
             lights[choice - 1] = "O"
         else:
             lights[choice - 1] = "X"
 
+    if choice < 9:
         if lights[choice + 1] == "X":
             lights[choice + 1] = "O"
         else:
             lights[choice + 1] = "X"
+
+    # check for win
+    if lights == ["X", "X", "X", "X", "X", "X", "X", "X", "X", "X"]:
+        print("You win!")
+        done = True
+        for i in range(10):
+            print(i, end=" ")
+        print()
+
+        for light in lights:
+            print(light, end=" ")
+        print()

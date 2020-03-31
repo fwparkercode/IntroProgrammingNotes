@@ -90,6 +90,7 @@ while not done:
     screen.fill(my_color)  # paint the blank canvas
     screen.fill(WHITE)
 
+    # blinking
     if frame % 60 < 30:
         pygame.draw.rect(screen, YELLOW, [200, 200, 50, 50])
 
