@@ -30,10 +30,8 @@ pygame.display.set_caption("My Game")
 clock = pygame.time.Clock()
 
 stick_x = 0
-change_x = 3
-
 stick_y = 0
-
+change_x = 5
 
 def draw_stick(x, y):
     x -= 95
@@ -54,6 +52,8 @@ def draw_stick(x, y):
     pygame.draw.line(screen, RED, [100 + x, 90 + y], [96 + x, 100 + y], 2)
 
 
+
+
 # -------- Main Program Loop -----------
 while not done:
     # --- Main event loop (user input)
@@ -61,9 +61,11 @@ while not done:
         if event.type == pygame.QUIT:
             done = True
 
+
     # --- Game logic should go here
     stick_x += change_x
-    if stick_x > WIDTH - 10:
+
+    if stick_x > WIDTH:
         change_x *= -1
     if stick_x < 0:
         change_x *= -1
@@ -73,7 +75,8 @@ while not done:
 
     draw_stick(stick_x, stick_y)
 
-    draw_stick(stick_x, 200)
+    for x in range(0, WIDTH, 100):
+        draw_stick(x, 400)
 
     pygame.display.flip()  # show the updated drawing
 

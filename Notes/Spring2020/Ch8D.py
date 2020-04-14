@@ -91,8 +91,11 @@ while not done:
     screen.fill(WHITE)
 
     # blinking
-    if frame % 60 < 30:
+    if frame % 120 < 60:
         pygame.draw.rect(screen, YELLOW, [200, 200, 50, 50])
+
+    if frame < 300:
+        pygame.draw.circle(screen, RED, [400, 400], 50)
 
     pygame.draw.rect(screen, BLUE, [rect_x, rect_y, 50, 50])
     pygame.draw.rect(screen, GREEN, [0, 0, health, 40])
