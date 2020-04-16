@@ -3,6 +3,7 @@
 # functions help us organize our code
 # make code repeatable
 import math
+import random
 
 
 def hi():
@@ -122,3 +123,17 @@ x = 5
 x = double_me(x)  # capture in global scope
 print(x)
 
+
+# make a function that returns a list of five random numbers from 1 to 6
+
+def yahtzee_roll():
+    roll_list = []
+    for i in range(5):
+        roll = random.randrange(1, 7)
+        roll_list.append(roll)
+    return roll_list
+
+for i in range(100000):
+    my_roll = yahtzee_roll()
+    if my_roll == [6, 6, 6, 6, 6]:
+        print("WINNER!")
