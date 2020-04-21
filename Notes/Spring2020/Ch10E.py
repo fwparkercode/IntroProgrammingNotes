@@ -29,7 +29,7 @@ pygame.display.set_caption("My Game")
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
 
-def draw_stick(x, y):
+def draw_stick(x, y, color):
     x -= 95
     y -= 83
 
@@ -41,15 +41,17 @@ def draw_stick(x, y):
     pygame.draw.line(screen, BLACK, [100 + x, 100 + y], [95 + x, 110 + y], 2)
 
     # Body
-    pygame.draw.line(screen, RED, [100 + x, 100 + y], [100 + x, 90 + y], 2)
+    pygame.draw.line(screen, color, [100 + x, 100 + y], [100 + x, 90 + y], 2)
 
     # Arms
-    pygame.draw.line(screen, RED, [100 + x, 90 + y], [104 + x, 100 + y], 2)
-    pygame.draw.line(screen, RED, [100 + x, 90 + y], [96 + x, 100 + y], 2)
+    pygame.draw.line(screen, color, [100 + x, 90 + y], [104 + x, 100 + y], 2)
+    pygame.draw.line(screen, color, [100 + x, 90 + y], [96 + x, 100 + y], 2)
 
 
 stick_x = 0
 stick_y = 0
+stick_color = RED
+pygame.mouse.set_visible(False)  # turn the cursor arrow off
 
 # -------- Main Program Loop -----------
 while not done:
@@ -57,12 +59,23 @@ while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
+        elif event.type == pygame.MOUSEMOTION:
+            #print(event.pos)  # event.pos is the mouse position as a tuple
+            stick_x, stick_y = event.pos
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            # pressed the mouse button down
+            stick_color = GREEN
+            print(event.button, event.pos)
+        elif event.type == pygame.MOUSEBUTTONUP:
+            # lifted my finger off the button
+            stick_color = RED
+
 
     # --- Game logic should go here
 
     # --- Drawing code should go here
     screen.fill(WHITE)  # paint the blank canvas
-    draw_stick(stick_x, stick_y)
+    draw_stick(stick_x, stick_y, stick_color)
 
     pygame.display.flip()  # show the updated drawing
 
