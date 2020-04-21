@@ -29,7 +29,7 @@ pygame.display.set_caption("My Game")
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
 
-def draw_stickman(x, y):
+def draw_stickman(x, y, color):
     x -= 95
     y -= 83
 
@@ -41,15 +41,18 @@ def draw_stickman(x, y):
     pygame.draw.line(screen, BLACK, [100 + x, 100 + y], [95 + x, 110 + y], 2)
 
     # Body
-    pygame.draw.line(screen, RED, [100 + x, 100 + y], [100 + x, 90 + y], 2)
+    pygame.draw.line(screen, color, [100 + x, 100 + y], [100 + x, 90 + y], 2)
 
     # Arms
-    pygame.draw.line(screen, RED, [100 + x, 90 + y], [104 + x, 100 + y], 2)
-    pygame.draw.line(screen, RED, [100 + x, 90 + y], [96 + x, 100 + y], 2)
+    pygame.draw.line(screen, color, [100 + x, 90 + y], [104 + x, 100 + y], 2)
+    pygame.draw.line(screen, color, [100 + x, 90 + y], [96 + x, 100 + y], 2)
 
 
 stick_x = 0
 stick_y = 0
+color = RED
+
+pygame.mouse.set_visible(False)
 
 
 # -------- Main Program Loop -----------
@@ -59,16 +62,19 @@ while not done:
         if event.type == pygame.QUIT:
             done = True
         elif event.type == pygame.MOUSEMOTION:
-            print(event.pos)
-
-
+            stick_x, stick_y = event.pos
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            print(event.button)
+            color = GREEN
+        elif event.type == pygame.MOUSEBUTTONUP:
+            color = MAGENTA
 
     # --- Game logic should go here
 
     # --- Drawing code should go here
     screen.fill(WHITE)  # paint the blank canvas
 
-    draw_stickman(stick_x, stick_y)
+    draw_stickman(stick_x, stick_y, color)
 
     pygame.display.flip()  # show the updated drawing
 
