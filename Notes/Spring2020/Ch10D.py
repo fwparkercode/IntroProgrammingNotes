@@ -47,10 +47,14 @@ def draw_stickman(x, y, color):
     pygame.draw.line(screen, color, [100 + x, 90 + y], [104 + x, 100 + y], 2)
     pygame.draw.line(screen, color, [100 + x, 90 + y], [96 + x, 100 + y], 2)
 
-
+# mouse controlled player
 stick_x = 0
 stick_y = 0
 color = RED
+
+# key controlled player
+stick_keyx = 100
+stick_keyy = 0
 
 pygame.mouse.set_visible(False)
 
@@ -64,17 +68,22 @@ while not done:
         elif event.type == pygame.MOUSEMOTION:
             stick_x, stick_y = event.pos
         elif event.type == pygame.MOUSEBUTTONDOWN:
-            print(event.button)
+            #print(event.button)
             color = GREEN
         elif event.type == pygame.MOUSEBUTTONUP:
             color = MAGENTA
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                stick_keyx -= 50
 
     # --- Game logic should go here
 
     # --- Drawing code should go here
     screen.fill(WHITE)  # paint the blank canvas
 
-    draw_stickman(stick_x, stick_y, color)
+    draw_stickman(stick_x, stick_y, color)  # mouse controlled
+
+    draw_stickman(stick_keyx, stick_keyy, RED)  # key controlled
 
     pygame.display.flip()  # show the updated drawing
 
