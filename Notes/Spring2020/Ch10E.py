@@ -47,10 +47,17 @@ def draw_stick(x, y, color):
     pygame.draw.line(screen, color, [100 + x, 90 + y], [104 + x, 100 + y], 2)
     pygame.draw.line(screen, color, [100 + x, 90 + y], [96 + x, 100 + y], 2)
 
-
+# Mouse variables
 stick_x = 0
 stick_y = 0
 stick_color = RED
+
+# keyboard variables
+key_x = 0
+key_y = 0
+key_changex = 0
+key_changey = 0
+
 pygame.mouse.set_visible(False)  # turn the cursor arrow off
 
 # -------- Main Program Loop -----------
@@ -69,13 +76,38 @@ while not done:
         elif event.type == pygame.MOUSEBUTTONUP:
             # lifted my finger off the button
             stick_color = RED
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_RIGHT:
+                key_changex = 3
+            elif event.key == pygame.K_LEFT:
+                key_changex = -3
+            elif event.key == pygame.K_UP:
+                key_changey = -3
+            elif event.key == pygame.K_DOWN:
+                key_changey = 3
+        elif event.type == pygame.KEYUP:
+            if event.key == pygame.K_RIGHT or event.key == pygame.K_LEFT:
+                key_changex = 0
+            elif event.key == pygame.K_UP or event.key == pygame.K_DOWN:
+                key_changey = 0
 
 
     # --- Game logic should go here
+    key_x += key_changex
+    key_y += key_changey
+
+    # boundary checks
+    if stick_x > WIDTH - 11:
+        stick_x = WIDTH - 11
+
+    if key_x < 0:
+        key_x = 0
 
     # --- Drawing code should go here
     screen.fill(WHITE)  # paint the blank canvas
-    draw_stick(stick_x, stick_y, stick_color)
+
+    draw_stick(stick_x, stick_y, stick_color) # mouse control
+    draw_stick(key_x, key_y, RED)  # key control
 
     pygame.display.flip()  # show the updated drawing
 
