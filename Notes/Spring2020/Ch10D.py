@@ -55,6 +55,8 @@ color = RED
 # key controlled player
 stick_keyx = 100
 stick_keyy = 0
+stick_changex = 0
+stick_changey = 0
 
 pygame.mouse.set_visible(False)
 
@@ -74,9 +76,27 @@ while not done:
             color = MAGENTA
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                stick_keyx -= 50
+                stick_changex = -3
+            elif event.key == pygame.K_RIGHT:
+                stick_changex = 3
+            elif event.key == pygame.K_DOWN:
+                stick_changey = 3
+            elif event.key == pygame.K_UP:
+                stick_changey = -3
+        elif event.type == pygame.KEYUP:
+            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+                stick_changex = 0
+            elif event.key == pygame.K_UP or event.key == pygame.K_DOWN:
+                stick_changey = 0
 
     # --- Game logic should go here
+    stick_keyx += stick_changex
+    if stick_keyx < 0:
+        stick_keyx = 0
+    if stick_keyx > WIDTH - 10:
+        stick_keyx = WIDTH - 10
+
+    stick_keyy += stick_changey
 
     # --- Drawing code should go here
     screen.fill(WHITE)  # paint the blank canvas
