@@ -83,7 +83,7 @@ def f():
 print(x)  # the local variable can not be seen globally.  (this just prints the value of the global x)
 
 
-# We cannot chagne a global variable in the local space (but we can see it)
+# We cannot change a global variable in the local space (but we can see it)
 y = 3  # global variable
 
 def g():
@@ -100,6 +100,21 @@ def h(z):
 z = 5
 z = h(z)  # returned and capture
 print(z)
+
+
+
+# refresh
+x = 5  # global x
+
+def double_triple(x):
+    return x * 2, x * 3  # local variable x
+
+print(double_triple(x))
+print(x)
+
+
+
+
 
 
 

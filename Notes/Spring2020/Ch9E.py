@@ -137,3 +137,7 @@ for i in range(100000):
     my_roll = yahtzee_roll()
     if my_roll == [6, 6, 6, 6, 6]:
         print("WINNER!")
+        print(my_roll)
+
+
+
