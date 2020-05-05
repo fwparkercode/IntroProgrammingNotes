@@ -1,6 +1,12 @@
 """
 Pygame base template
 by Aaron Lee 2020
+
+
+kenney.nl
+pixabay
+morguefile
+zamzar (conversions)
 """
 
 import pygame
@@ -34,6 +40,20 @@ bg_image = pygame.image.load('space.jpg')
 dragon_image = pygame.image.load('dragon.png')
 dragon_image2 = pygame.image.load('dragon2.png')
 
+# sound objects
+bg_music = pygame.mixer.Sound('gloom.ogg')
+dragon_sound = pygame.mixer.Sound('cheer-crowd.ogg')
+
+
+bg_music.set_volume(0.03)  # float from 0 to 1 (0 to 100%)
+
+bg_music.play()  # plays once
+# bg_music.play(2)  # plays three times
+# bg_music.play(-1)  # plays on loop forever
+
+
+
+
 # animation variables
 dragon_x = 0
 dragon_y = 0
@@ -47,6 +67,8 @@ while not done:
             done = True
         elif event.type == pygame.MOUSEMOTION:
             dragon_x, dragon_y = event.pos
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            dragon_sound.play()
 
     # --- Game logic should go here
 

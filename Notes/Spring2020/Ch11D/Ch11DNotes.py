@@ -3,6 +3,12 @@ Pygame base template
 by Aaron Lee 2020
 """
 
+
+# opengameart (images and sounds)
+# kenney.nl (sprites and effects)
+# zamzar (file conversions)
+# pixabay and morguefile.com for photos
+
 import pygame
 
 # Define global varibles
@@ -33,6 +39,17 @@ clock = pygame.time.Clock()
 bg_image = pygame.image.load("trees.jpg")
 squirrel_image = pygame.image.load('squirrel.png')
 
+# sound files
+bg_music = pygame.mixer.Sound("bgmusic.ogg")
+bg_music.set_volume(0.01)  # float between 0 and 1 (0 to 100%)
+# bg_music.play()  # play through one time
+#bg_music.play(0)  # one time  (start with 0 in programming)
+#bg_music.play(1)  # two time
+bg_music.play(-1)  # play forever (loop)
+
+glass_sound = pygame.mixer.Sound('glass.ogg')
+cheer_sound = pygame.mixer.Sound('cheer-crowd.ogg')
+
 # animation variables
 sq_x = 0
 sq_y = 0
@@ -48,9 +65,17 @@ while not done:
             # sq_y = event.pos[1]
             # or use
             sq_x, sq_y = event.pos
-
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            glass_sound.play()
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_DOWN:
+                cheer_sound.play()
 
     # --- Game logic should go here
+    if sq_x <= 0:
+        sq_x = 0
+        glass_sound.play()
+
 
     # --- Drawing code should go here
     #screen.fill(WHITE)  # paint the blank canvas
