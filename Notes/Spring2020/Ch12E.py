@@ -89,5 +89,47 @@ duck.pay_rent(12, dog)
 
 
 
+########
+
+class Boat():
+    def __init__(self, name):
+        self.tonnage = 0
+        self.name = name
+        self.is_docked = True
+        print(self.name, 'has come out of the shipyard.')
+
+    def dock(self):
+        if self.is_docked:
+            self.is_docked = False
+            print(self.name, 'is undocked.')
+        else:
+            self.is_docked = True
+            print(self.name, 'is docked.')
+
+class Submarine(Boat):
+    def __init__(self, name):
+        super().__init__(name)
+        self.is_submerged = False
+
+    def submerge(self):
+        if self.is_docked == False:
+            if self.is_submerged:
+                self.is_submerged = False
+                print(self.name, 'is submerged.')
+            else:
+                self.is_submerged = True
+                print(self.name, 'is on surface.')
+        else:
+            print(self.name, 'cannot surface or submerge in dock.')
+
+
+essex = Boat("USS Essex")
+essex.dock()
+essex.dock()
+
+los_angeles = Submarine("USS Los Angeles")
+los_angeles.submerge()
+
+
 
 
