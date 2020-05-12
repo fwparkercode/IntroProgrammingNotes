@@ -79,5 +79,47 @@ print(player1.money)
 player2.roll_dice()
 player2.pay_rent(4, player1)
 
+#######################
+# inheritance - child class inherits all attributes and methods of parent
+# parent - base class.  More basic example
+# child - a more specific example of the parent
 
+class Boat():
+    # parent class
+    def __init__(self, name):
+        print("A boat has left the shipyard.")
+        self.tonnage = 0
+        self.name = name
+        self.is_docked = True
+
+    def dock(self):
+        if self.is_docked == True:
+            self.is_docked = False
+            print(self.name, 'has undocked.')
+        else:
+            self.is_docked = True
+            print(self.name, 'has docked.')
+
+
+class Submarine(Boat):
+    def __init__(self, name):
+        super().__init__(name)
+        print("A sub has left the shipyard")
+        self.submerged = False
+
+    def submerge(self):
+        if self.submerged == True:
+            self.submerged = False
+            print(self.name, 'has surfaced.')
+        else:
+            self.submerged = True
+            print(self.name, 'has submerged.')
+
+
+boat = Boat("USS Essex")
+print(boat.tonnage)
+
+sub = Submarine("USS Los Angeles")
+sub.submerge()
+sub.dock()
 
