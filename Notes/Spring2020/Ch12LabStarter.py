@@ -43,16 +43,32 @@ class Rectangle():
     def update(self):
         pass  # you fill it in
 
+class Ellipse(Rectangle):
+    def draw(self):
+        pygame.draw.ellipse(screen, self.color, [self.x, self.y, self.width, self.height])
+
+
 my_shapes = []
 
 for i in range(100):
+    # make rect
     color = [random.randrange(256), random.randrange(256), random.randrange(256)]
     x = random.randrange(WIDTH)
     y = random.randrange(HEIGHT)
     width = random.randrange(20, 50)
     height = random.randrange(20, 50)
     my_rect = Rectangle(x, y, width, height, color)
+
+    # make ellipse
+    color = [random.randrange(256), random.randrange(256), random.randrange(256)]
+    x = random.randrange(WIDTH)
+    y = random.randrange(HEIGHT)
+    width = random.randrange(20, 50)
+    height = random.randrange(20, 50)
+    my_ellipse = Ellipse(x, y, width, height, color)
     my_shapes.append(my_rect)
+    my_shapes.append(my_ellipse)
+
 
 # -------- Main Program Loop -----------
 while not done:
