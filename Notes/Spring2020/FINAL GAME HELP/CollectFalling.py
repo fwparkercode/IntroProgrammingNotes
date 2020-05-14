@@ -59,7 +59,7 @@ class Player(pygame.sprite.Sprite):
     def changespeed(self, x, y):
         """ Change the speed of the player"""
         self.change_x += x
-        self.change_y += y
+        # self.change_y += y
 
     def update(self):
         """ Find a new position for the player"""
@@ -83,10 +83,27 @@ class Block(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()  # grabs the rectangle based on the surface/image size
         self.rect.x = x
         self.rect.y = y
+        self.change_y = random.randrange(1, 4)
+        self.change_x = random.randrange(-4, 5)
+
+
         if self.rect.right > WIDTH:
             self.rect.right = WIDTH
         if self.rect.bottom > HEIGHT:
             self.rect.bottom = HEIGHT
+
+    def update(self):
+        self.rect.y += self.change_y
+        if self.rect.top > HEIGHT:
+            self.rect.bottom = 0
+
+        self.rect.x += self.change_x
+        if self.rect.right > WIDTH:
+            self.rect.right = WIDTH
+            self.change_x *= -1
+        if self.rect.left < 0:
+            self.rect.left = 0
+            self.change_x *= -1
 
 # make my groups
 all_sprites = pygame.sprite.Group()  # making a bucket for everything
@@ -95,11 +112,14 @@ enemy_sprites = pygame.sprite.Group()  # enemy bucket
 
 # creating instances of sprites
 player = Player(0, 0)
+player.rect.bottom = HEIGHT
+player.rect.centerx = WIDTH // 2
+
 all_sprites.add(player)
 
 for i in range(50):
     x = random.randrange(WIDTH)
-    y = random.randrange(HEIGHT)
+    y = random.randrange(-HEIGHT, 0)
     block = Block(x, y)
     block.image.fill(GREEN)
     all_sprites.add(block)  # for drawing purposes
@@ -107,7 +127,7 @@ for i in range(50):
 
 for i in range(50):
     x = random.randrange(WIDTH)
-    y = random.randrange(HEIGHT)
+    y = random.randrange(-HEIGHT, 0)
     block = Block(x, y)
     block.image.fill(RED)
     all_sprites.add(block)  # for drawing purposes
