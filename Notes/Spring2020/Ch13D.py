@@ -54,10 +54,13 @@ class Player(pygame.sprite.Sprite):
         self.change_x = 0
         self.change_y = 0
 
+        # put at bottom of screen
+        self.rect.bottom = HEIGHT
+
     def changespeed(self, x, y):
         """ Change the speed of the player"""
         self.change_x += x
-        self.change_y += y
+        # self.change_y += y
 
     def update(self):
         """ Find a new position for the player"""
@@ -83,6 +86,21 @@ class Block(pygame.sprite.Sprite):
         self.image = pygame.Surface([20, 20])
         self.image.fill(RED)
         self.rect = self.image.get_rect()
+        self.change_x = random.randrange(-3, 4)
+        self.change_y = random.randrange(1, 3)
+
+    def update(self):
+        self.rect.x += self.change_x
+        if self.rect.left < 0:
+            self.rect.left = 0
+            self.change_x *= -1
+        if self.rect.right > WIDTH:
+            self.rect.right = WIDTH
+            self.change_x *= -1
+
+        self.rect.y += self.change_y
+        if self.rect.top > HEIGHT:
+            self.rect.bottom = 0
 
 # create groups
 all_sprites = pygame.sprite.Group()  # bucket for everyone (sprites)
@@ -92,14 +110,17 @@ block_sprites = pygame.sprite.Group()  # bucket for blocks
 player = Player(0, 0)
 all_sprites.add(player)
 
-for i in range(50):
+for i in range(30):
     block = Block()
-    block.rect.x = random.randrange(WIDTH)
-    block.rect.y = random.randrange(HEIGHT)
+    block.rect.x = random.randrange(WIDTH - block.rect.width)
+    block.rect.y = random.randrange(HEIGHT - block.rect.height)
     all_sprites.add(block)  # makes it update and draw
     block_sprites.add(block)
 
 score = 0
+
+my_font = pygame.font.SysFont('Calibri', 30, True, False)
+
 
 # -------- Main Program Loop -----------
 while not done:
@@ -144,6 +165,9 @@ while not done:
     screen.fill(WHITE)  # paint the blank canvas
 
     all_sprites.draw(screen)  # draws the image of each sprite at their rect location
+
+    my_text = my_font.render("Score: " + str(score), True, BLACK)
+    screen.blit(my_text, [20, 20])
 
     pygame.display.flip()  # show the updated drawing
 
