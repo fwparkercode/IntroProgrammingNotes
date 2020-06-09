@@ -1,57 +1,27 @@
-'''
-import dash
-import dash_core_components as dcc
-import dash_html_components as html
+a = "Flatiron prepares students to succeed."
+print(a.replace("r", "i").replace(".", "!").strip())
 
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+b = 1
+b += b
+print(b)
 
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+my_num = [0.86, 1.65, 1.61, 0.68, 1.08,
+0.75, 2.81, 4.41, 0.29, 0.50,
+6.71, 0.22, 0.24, 4.26, 2.66,
+0.18, 0.33, 0.14, 2.00, 0.63]
 
-app.layout = html.Div(children=[
-    html.H1(children='Hello Dash'),
+my_num.sort()
+print(my_num[len(my_num)//2])
 
-    html.Div(children="""
-        Dash: A web application framework for Python.
-    """),
+import statistics
 
-    dcc.Graph(
-        id='example-graph',
-        figure={
-            'data': [
-                {'x': [1, 2, 3], 'y': [4, 1, 8], 'type': 'bar', 'name': 'SF'},
-                {'x': [1, 2, 3], 'y': [2, 4, 5], 'type': 'bar', 'name': u'Montréal'},
-            ],
-            'layout': {
-                'title': 'Dash Data Visualization'
-            }
-        }
-    )
-])
+print(statistics.stdev(my_num))
 
-if __name__ == '__main__':
-    app.run_server(debug=True)
+def f(x):
+    return 2 * x + 1
 
-'''
+def g(x):
+    return 1/x
 
+print(f(g(2)))
 
-
-import pyxel
-
-
-class App:
-    def __init__(self):
-        pyxel.init(160, 120, caption="Hello Pyxel")
-        pyxel.image(0).load(0, 0, "dragon.png")
-        pyxel.run(self.update, self.draw)
-
-    def update(self):
-        if pyxel.btnp(pyxel.KEY_Q):
-            pyxel.quit()
-
-    def draw(self):
-        pyxel.cls(0)
-        pyxel.text(1, 41, "Hello, Pyxel!", pyxel.frame_count % 16)
-        pyxel.blt(61, 66, 0, 0, 0, 38, 16)
-
-
-App()

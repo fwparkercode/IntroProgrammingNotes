@@ -1,0 +1,17 @@
+
+# in setup
+real_screen = pygame.display.set_mode([320, 240])
+
+
+# In all graphics loops
+to_blit = pygame.transform.scale(screen, (320, 240))
+real_screen.blit(to_blit, (0, 0))
+
+
+# In event loop
+# replace fire/jump/action keys with
+GAMESHELL_A = arcade.key.J
+GAMESHELL_Y = arcade.key.I
+GAMESHELL_X = arcade.key.U
+GAMESHELL_B = arcade.key.K
+GAMESHELL_START = arcade.key.ENTER

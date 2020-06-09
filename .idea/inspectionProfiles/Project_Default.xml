@@ -5,6 +5,7 @@
       <option name="ignoredIdentifiers">
         <list>
           <option value="Examples.w19Asteroids.w19asteroids.asteroid_globals" />
+          <option value="Examples.w19Asteroids.w19asteroids.sprite_classes" />
         </list>
       </option>
     </inspection_tool>

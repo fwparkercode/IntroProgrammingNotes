@@ -1,0 +1,17 @@
+# Global Variables
+BLACK = (0, 0, 0)  # red, green, blue (RGB)
+WHITE = (255, 255, 255)
+GRAY = (150, 150, 150)
+GREEN = (0, 255, 0)
+RED = (255, 0, 0)
+BLUE = (0, 0, 255)
+MAGENTA = (255, 0, 255)
+CYAN = (0, 255, 255)
+YELLOW = (255, 255, 0)
+PINK = (255, 200, 200)
+MAROON = (100, 0, 0)
+ORANGE = (255, 150, 0)
+PURPLE = (150, 50, 200)
+
+SCREEN_WIDTH = 700
+SCREEN_HEIGHT = 500
